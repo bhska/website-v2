@@ -12,6 +12,8 @@ export default function Home() {
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
+          delay={0.2}
+          viewport={{ once: true }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="bg-dashed flex aspect-video flex-col justify-center border-b p-10 md:aspect-square md:border-r md:border-b-0">
