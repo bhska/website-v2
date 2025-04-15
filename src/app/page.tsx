@@ -39,21 +39,28 @@ export default function Home() {
       </Section>
 
       <div className="relative">
-        <Gallery
-          bend={1}
-          textColor="#000"
-          borderRadius={0.05}
-          className="absolute bottom-0 left-0 z-10 h-3/4 w-full md:h-5/6"
-        />
+        <ViewAnimation
+          initial={{ opacity: 0, translateY: -8 }}
+          whileInView={{ opacity: 1, translateY: 0 }}
+          delay={0.4}
+          viewport={{ once: true }}
+        >
+          <Gallery
+            bend={1}
+            textColor="#000"
+            borderRadius={0.05}
+            className="absolute bottom-0 left-0 z-10 h-3/4 w-full md:h-5/6"
+          />
 
-        <Section className="relative flex h-[80svh] flex-col items-center gap-4 pt-6">
-          <span className="font-mono text-3xl">Gallery</span>
-          <span className="prose text-muted-foreground px-4 text-center text-sm">
-            "A curated visual anthology capturing fragments and chronicles of my technological
-            odyssey—showcasing endeavors in software craftsmanship, robotic ingenuity, collaborative
-            ventures, and digital explorations."
-          </span>
-        </Section>
+          <Section className="relative flex h-[80svh] flex-col items-center gap-4 pt-6">
+            <span className="font-mono text-3xl">Gallery</span>
+            <span className="prose text-muted-foreground px-4 text-center text-sm">
+              "A curated visual anthology capturing fragments and chronicles of my technological
+              odyssey—showcasing endeavors in software craftsmanship, robotic ingenuity,
+              collaborative ventures, and digital explorations."
+            </span>
+          </Section>
+        </ViewAnimation>
       </div>
     </>
   );

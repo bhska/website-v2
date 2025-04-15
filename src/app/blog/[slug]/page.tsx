@@ -8,6 +8,7 @@ import { CustomMDX } from '@/components/common/mdx';
 import ScrollToHash from '@/components/common/scroll-to-hash';
 import { Section } from '@/components/common/section';
 import { ArrowLeft } from 'lucide-react';
+import { ViewAnimation } from '@/providers/view-animation';
 
 interface BlogProps {
   params: {
@@ -80,46 +81,53 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
 
   return (
     <Section className="px-2 py-8">
-      <div className="mx-auto flex max-w-md flex-col gap-2">
-        <script
-          type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BlogPosting',
-              headline: post.metadata.title,
-              datePublished: post.metadata.publishedAt,
-              dateModified: post.metadata.publishedAt,
-              description: post.metadata.summary,
-              image: post.metadata.image
-                ? `https://${baseURL}${post.metadata.image}`
-                : `https://${baseURL}/og?title=${post.metadata.title}`,
-              url: `https://${baseURL}/blog/${post.slug}`,
-              author: {
-                '@type': 'Person',
-                name: person.name,
-              },
-            }),
-          }}
-        />
+      <ViewAnimation
+        initial={{ opacity: 0, translateY: -8 }}
+        whileInView={{ opacity: 1, translateY: 0 }}
+        delay={0.2}
+        viewport={{ once: true }}
+      >
+        <div className="mx-auto flex max-w-md flex-col gap-2">
+          <script
+            type="application/ld+json"
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BlogPosting',
+                headline: post.metadata.title,
+                datePublished: post.metadata.publishedAt,
+                dateModified: post.metadata.publishedAt,
+                description: post.metadata.summary,
+                image: post.metadata.image
+                  ? `https://${baseURL}${post.metadata.image}`
+                  : `https://${baseURL}/og?title=${post.metadata.title}`,
+                url: `https://${baseURL}/blog/${post.slug}`,
+                author: {
+                  '@type': 'Person',
+                  name: person.name,
+                },
+              }),
+            }}
+          />
 
-        <Link href="/blog" className="w-max">
-          <Button variant="outline" size="sm" className="w-fit">
-            <ArrowLeft />
-            Posts
-          </Button>
-        </Link>
-        <div className="flex flex-col gap-3 py-3">
-          <h1 className="font-mono text-2xl font-medium sm:text-4xl">{post.metadata.title}</h1>
-          <span>{post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}</span>
-        </div>
+          <Link href="/blog" className="w-max">
+            <Button variant="outline" size="sm" className="w-fit">
+              <ArrowLeft />
+              Posts
+            </Button>
+          </Link>
+          <div className="flex flex-col gap-3 py-3">
+            <h1 className="font-mono text-2xl font-medium sm:text-4xl">{post.metadata.title}</h1>
+            <span>{post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}</span>
+          </div>
 
-        <div className="flex flex-col gap-2">
-          <CustomMDX source={post.content} />
+          <div className="flex flex-col gap-2">
+            <CustomMDX source={post.content} />
+          </div>
+          <ScrollToHash />
         </div>
-        <ScrollToHash />
-      </div>
+      </ViewAnimation>
     </Section>
   );
 }
