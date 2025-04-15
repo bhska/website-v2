@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from 'motion/react';
 
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 interface ViewAnimationProps {
   initial?: Record<string, string | number>;
@@ -13,7 +13,7 @@ interface ViewAnimationProps {
   children: ReactNode;
   viewport?: {
     once?: boolean;
-    amount?: "some" | "all" | number;
+    amount?: 'some' | 'all' | number;
   };
 }
 
@@ -34,8 +34,8 @@ export const ViewAnimation = ({
 
   return (
     <motion.div
-      initial={{ filter: "blur(4px)", ...initial }}
-      whileInView={{ filter: "blur(0px)", ...whileInView }}
+      initial={{ filter: 'blur(4px)', ...initial }}
+      whileInView={{ filter: 'blur(0px)', ...whileInView }}
       className={className}
       viewport={viewport}
       transition={{ delay: delay ?? 0, duration: 0.8 }}

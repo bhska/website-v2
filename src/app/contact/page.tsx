@@ -1,10 +1,7 @@
 'use client';
 
-import Dither from '@/components/animations/dither';
 import HeroSection from '@/components/common/hero-section';
-import { Cross, Section } from '@/components/common/section';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Section } from '@/components/common/section';
 import { ViewAnimation } from '@/providers/view-animation';
 import { contact } from '@/resources';
 import Link from 'next/link';
@@ -29,7 +26,7 @@ export default function Contact() {
             contact.map(
               (item) =>
                 item.link && (
-                  <div className="p-6 hover:bg-neutral-300 hover:text-white" key={item.name}>
+                  <div className="p-6 hover:bg-neutral-300" key={item.name}>
                     <Link href={item.link}>{item.name}</Link>
                   </div>
                 ),

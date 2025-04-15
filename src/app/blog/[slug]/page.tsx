@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-
 import { getPosts } from '@/lib/utils';
 import { formatDate } from '@/lib/date';
 import { Button } from '@/components/ui/button';
@@ -8,29 +7,31 @@ import Link from 'next/link';
 import { CustomMDX } from '@/components/common/mdx';
 import ScrollToHash from '@/components/common/scroll-to-hash';
 import { Section } from '@/components/common/section';
-import { ArrowLeft, ChevronLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
-interface BlogParams {
+interface BlogProps {
   params: {
     slug: string;
   };
 }
 
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
+export async function generateStaticParams() {
   const posts = getPosts(['src', 'app', 'blog', 'posts']);
+
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export function generateMetadata({ params: { slug } }: BlogParams) {
-  let post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === slug);
 
   if (!post) {
     return null;
   }
 
-  let {
+  const {
     title,
     publishedAt: publishedTime,
     summary: description,
@@ -38,7 +39,7 @@ export function generateMetadata({ params: { slug } }: BlogParams) {
     image,
     team,
   } = post.metadata;
-  let ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
+  const ogImage = image ? `https://${baseURL}${image}` : `https://${baseURL}/og?title=${title}`;
 
   return {
     title,
@@ -64,8 +65,9 @@ export function generateMetadata({ params: { slug } }: BlogParams) {
   };
 }
 
-export default function Blog({ params }: BlogParams) {
-  let post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === params.slug);
+export default async function Blog({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getPosts(['src', 'app', 'blog', 'posts']).find((post) => post.slug === slug);
 
   if (!post) {
     notFound();

@@ -1,18 +1,10 @@
-"use client";
+'use client';
 
-import { useRef, useEffect } from "react";
-import {
-  Renderer,
-  Camera,
-  Transform,
-  Plane,
-  Mesh,
-  Program,
-  Texture,
-} from "ogl";
-import { cn } from "@/lib/utils";
+import { useRef, useEffect } from 'react';
+import { Renderer, Camera, Transform, Plane, Mesh, Program, Texture } from 'ogl';
+import { cn } from '@/lib/utils';
 
-type GL = Renderer["gl"];
+type GL = Renderer['gl'];
 
 function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
   let timeout: number;
@@ -29,7 +21,7 @@ function lerp(p1: number, p2: number, t: number): number {
 function autoBind(instance: any): void {
   const proto = Object.getPrototypeOf(instance);
   Object.getOwnPropertyNames(proto).forEach((key) => {
-    if (key !== "constructor" && typeof instance[key] === "function") {
+    if (key !== 'constructor' && typeof instance[key] === 'function') {
       instance[key] = instance[key].bind(instance);
     }
   });
@@ -43,12 +35,12 @@ function getFontSize(font: string): number {
 function createTextTexture(
   gl: GL,
   text: string,
-  font = "bold 30px monospace",
-  color = "black",
+  font = 'bold 30px monospace',
+  color = 'black',
 ): { texture: Texture; width: number; height: number } {
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
-  if (!context) throw new Error("Could not get 2d context");
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  if (!context) throw new Error('Could not get 2d context');
 
   context.font = font;
   const metrics = context.measureText(text);
@@ -61,8 +53,8 @@ function createTextTexture(
 
   context.font = font;
   context.fillStyle = color;
-  context.textBaseline = "middle";
-  context.textAlign = "center";
+  context.textBaseline = 'middle';
+  context.textAlign = 'center';
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.fillText(text, canvas.width / 2, canvas.height / 2);
 
@@ -94,8 +86,8 @@ class Title {
     plane,
     renderer,
     text,
-    textColor = "#000",
-    font = "30px sans-serif",
+    textColor = '#000',
+    font = '30px sans-serif',
   }: TitleProps) {
     autoBind(this);
     this.gl = gl;
@@ -145,8 +137,7 @@ class Title {
     const textHeightScaled = this.plane.scale.y * 0.15;
     const textWidthScaled = textHeightScaled * aspect;
     this.mesh.scale.set(textWidthScaled, textHeightScaled, 1);
-    this.mesh.position.y =
-      -this.plane.scale.y * 0.5 - textHeightScaled * 0.5 - 0.05;
+    this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeightScaled * 0.5 - 0.05;
     this.mesh.setParent(this.plane);
   }
 }
@@ -308,14 +299,11 @@ class Media {
       transparent: true,
     });
     const img = new Image();
-    img.crossOrigin = "anonymous";
+    img.crossOrigin = 'anonymous';
     img.src = this.image;
     img.onload = () => {
       texture.image = img;
-      this.program.uniforms.uImageSizes.value = [
-        img.naturalWidth,
-        img.naturalHeight,
-      ];
+      this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
     };
   }
 
@@ -338,10 +326,7 @@ class Media {
     });
   }
 
-  update(
-    scroll: { current: number; last: number },
-    direction: "right" | "left",
-  ) {
+  update(scroll: { current: number; last: number }, direction: 'right' | 'left') {
     this.plane.position.x = this.x - scroll.current - this.extra;
 
     const x = this.plane.position.x;
@@ -373,20 +358,17 @@ class Media {
     const viewportOffset = this.viewport.width / 2;
     this.isBefore = this.plane.position.x + planeOffset < -viewportOffset;
     this.isAfter = this.plane.position.x - planeOffset > viewportOffset;
-    if (direction === "right" && this.isBefore) {
+    if (direction === 'right' && this.isBefore) {
       this.extra -= this.widthTotal;
       this.isBefore = this.isAfter = false;
     }
-    if (direction === "left" && this.isAfter) {
+    if (direction === 'left' && this.isAfter) {
       this.extra += this.widthTotal;
       this.isBefore = this.isAfter = false;
     }
   }
 
-  onResize({
-    screen,
-    viewport,
-  }: { screen?: ScreenSize; viewport?: Viewport } = {}) {
+  onResize({ screen, viewport }: { screen?: ScreenSize; viewport?: Viewport } = {}) {
     if (screen) this.screen = screen;
     if (viewport) {
       this.viewport = viewport;
@@ -398,14 +380,9 @@ class Media {
       }
     }
     this.scale = this.screen.height / 1500;
-    this.plane.scale.y =
-      (this.viewport.height * (900 * this.scale)) / this.screen.height;
-    this.plane.scale.x =
-      (this.viewport.width * (700 * this.scale)) / this.screen.width;
-    this.plane.program.uniforms.uPlaneSizes.value = [
-      this.plane.scale.x,
-      this.plane.scale.y,
-    ];
+    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
+    this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
+    this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
     this.padding = 2;
     this.width = this.plane.scale.x + this.padding;
     this.widthTotal = this.width * this.length;
@@ -456,12 +433,12 @@ class App {
     {
       items,
       bend = 1,
-      textColor = "#ffffff",
+      textColor = '#ffffff',
       borderRadius = 0,
-      font = "bold 30px DM Sans",
+      font = 'bold 30px DM Sans',
     }: AppConfig,
   ) {
-    document.documentElement.classList.remove("no-js");
+    document.documentElement.classList.remove('no-js');
     this.container = container;
     this.scroll = { ease: 0.05, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
@@ -509,51 +486,51 @@ class App {
     const defaultItems = [
       {
         image: `https://picsum.photos/seed/1/800/600?grayscale`,
-        text: "Bridge",
+        text: 'Bridge',
       },
       {
         image: `https://picsum.photos/seed/2/800/600?grayscale`,
-        text: "Desk Setup",
+        text: 'Desk Setup',
       },
       {
         image: `https://picsum.photos/seed/3/800/600?grayscale`,
-        text: "Waterfall",
+        text: 'Waterfall',
       },
       {
         image: `https://picsum.photos/seed/4/800/600?grayscale`,
-        text: "Strawberries",
+        text: 'Strawberries',
       },
       {
         image: `https://picsum.photos/seed/5/800/600?grayscale`,
-        text: "Deep Diving",
+        text: 'Deep Diving',
       },
       {
         image: `https://picsum.photos/seed/16/800/600?grayscale`,
-        text: "Train Track",
+        text: 'Train Track',
       },
       {
         image: `https://picsum.photos/seed/17/800/600?grayscale`,
-        text: "Santorini",
+        text: 'Santorini',
       },
       {
         image: `https://picsum.photos/seed/8/800/600?grayscale`,
-        text: "Blurry Lights",
+        text: 'Blurry Lights',
       },
       {
         image: `https://picsum.photos/seed/9/800/600?grayscale`,
-        text: "New York",
+        text: 'New York',
       },
       {
         image: `https://picsum.photos/seed/10/800/600?grayscale`,
-        text: "Good Boy",
+        text: 'Good Boy',
       },
       {
         image: `https://picsum.photos/seed/21/800/600?grayscale`,
-        text: "Coastline",
+        text: 'Coastline',
       },
       {
         image: `https://picsum.photos/seed/12/800/600?grayscale`,
-        text: "Palm Trees",
+        text: 'Palm Trees',
       },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
@@ -581,12 +558,12 @@ class App {
   onTouchDown(e: MouseEvent | TouchEvent) {
     this.isDown = true;
     this.scroll.position = this.scroll.current;
-    this.start = "touches" in e ? e.touches[0].clientX : e.clientX;
+    this.start = 'touches' in e ? e.touches[0].clientX : e.clientX;
   }
 
   onTouchMove(e: MouseEvent | TouchEvent) {
     if (!this.isDown) return;
-    const x = "touches" in e ? e.touches[0].clientX : e.clientX;
+    const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
     const distance = (this.start - x) * 0.05;
     this.scroll.target = (this.scroll.position ?? 0) + distance;
   }
@@ -630,12 +607,8 @@ class App {
   }
 
   update() {
-    this.scroll.current = lerp(
-      this.scroll.current,
-      this.scroll.target,
-      this.scroll.ease,
-    );
-    const direction = this.scroll.current > this.scroll.last ? "right" : "left";
+    this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
+    const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
     if (this.medias) {
       this.medias.forEach((media) => media.update(this.scroll, direction));
     }
@@ -650,36 +623,30 @@ class App {
     this.boundOnTouchDown = this.onTouchDown.bind(this);
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
-    window.addEventListener("resize", this.boundOnResize);
-    window.addEventListener("mousewheel", this.boundOnWheel);
-    window.addEventListener("wheel", this.boundOnWheel);
-    window.addEventListener("mousedown", this.boundOnTouchDown);
-    window.addEventListener("mousemove", this.boundOnTouchMove);
-    window.addEventListener("mouseup", this.boundOnTouchUp);
-    window.addEventListener("touchstart", this.boundOnTouchDown);
-    window.addEventListener("touchmove", this.boundOnTouchMove);
-    window.addEventListener("touchend", this.boundOnTouchUp);
+    window.addEventListener('resize', this.boundOnResize);
+    window.addEventListener('mousewheel', this.boundOnWheel);
+    window.addEventListener('wheel', this.boundOnWheel);
+    window.addEventListener('mousedown', this.boundOnTouchDown);
+    window.addEventListener('mousemove', this.boundOnTouchMove);
+    window.addEventListener('mouseup', this.boundOnTouchUp);
+    window.addEventListener('touchstart', this.boundOnTouchDown);
+    window.addEventListener('touchmove', this.boundOnTouchMove);
+    window.addEventListener('touchend', this.boundOnTouchUp);
   }
 
   destroy() {
     window.cancelAnimationFrame(this.raf);
-    window.removeEventListener("resize", this.boundOnResize);
-    window.removeEventListener("mousewheel", this.boundOnWheel);
-    window.removeEventListener("wheel", this.boundOnWheel);
-    window.removeEventListener("mousedown", this.boundOnTouchDown);
-    window.removeEventListener("mousemove", this.boundOnTouchMove);
-    window.removeEventListener("mouseup", this.boundOnTouchUp);
-    window.removeEventListener("touchstart", this.boundOnTouchDown);
-    window.removeEventListener("touchmove", this.boundOnTouchMove);
-    window.removeEventListener("touchend", this.boundOnTouchUp);
-    if (
-      this.renderer &&
-      this.renderer.gl &&
-      this.renderer.gl.canvas.parentNode
-    ) {
-      this.renderer.gl.canvas.parentNode.removeChild(
-        this.renderer.gl.canvas as HTMLCanvasElement,
-      );
+    window.removeEventListener('resize', this.boundOnResize);
+    window.removeEventListener('mousewheel', this.boundOnWheel);
+    window.removeEventListener('wheel', this.boundOnWheel);
+    window.removeEventListener('mousedown', this.boundOnTouchDown);
+    window.removeEventListener('mousemove', this.boundOnTouchMove);
+    window.removeEventListener('mouseup', this.boundOnTouchUp);
+    window.removeEventListener('touchstart', this.boundOnTouchDown);
+    window.removeEventListener('touchmove', this.boundOnTouchMove);
+    window.removeEventListener('touchend', this.boundOnTouchUp);
+    if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
+      this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas as HTMLCanvasElement);
     }
   }
 }
@@ -696,10 +663,10 @@ interface GalleryProps {
 const Gallery: React.FC<GalleryProps> = ({
   items,
   bend = 3,
-  textColor = "#000",
+  textColor = '#000',
   borderRadius = 0,
-  font = "bold 30px VCR",
-  className = "",
+  font = 'bold 30px VCR',
+  className = '',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -719,10 +686,7 @@ const Gallery: React.FC<GalleryProps> = ({
 
   return (
     <div
-      className={cn(
-        "h-full w-full cursor-grab overflow-hidden active:cursor-grabbing",
-        className,
-      )}
+      className={cn('h-full w-full cursor-grab overflow-hidden active:cursor-grabbing', className)}
       ref={containerRef}
     />
   );
