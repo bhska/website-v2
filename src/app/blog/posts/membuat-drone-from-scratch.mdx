@@ -1,0 +1,84 @@
+---
+title: 'Membuat Drone from Scratch, Apa Mungkin? 🤔'
+publishedAt: '2025-05-01'
+summary: 'Membuat drone dari awal itu mungkin dengan mengumpulkan komponen seperti frame, flight controller, motor, dan lainnya. Proses ini melibatkan perancangan dan pengembangan yang cermat, serta mengikuti kompetisi seperti KRTI untuk menguji kemampuan drone yang dibuat. Selain perangkat keras, ada juga aspek perangkat lunak dan kalibrasi yang perlu diperhatikan.'
+tag: 'Technology, Engineering, Drone, Development'
+---
+
+Drone, dari kata tersebut pasti langsung terbayang vendor besar seperti DJI, Parrot, FIMI atau lainnya. Biasanya yang paling menjadi stereotip dari vendor-vendor tersebut antara lain ukuran yang besar, canggih dengan sistem yang kompleks menggunakan multiple sensor, stabil dan jarak tempuh lama serta jarak koneksi yang jauh. Tapi pernahkah terpikir bagaimana jika membuat drone sendiri?
+
+Pastinya jarang sekali terlintas di benak untuk membuat drone sendiri, terlebih pula tidak ada studi kasus yang memaksa untuk membuat hal tersebut. Buang-buang waktu dan uang saja, hehe. Namun di perguruan tinggi yang penulis tempuh, ada salah satu unit kegiatan mahasiswa (UKM) yang menarik minat penulis, yaitu UKM robotik. Di UKM ini sebenarnya banyak sekali bidangnya, sebut saja robot sepak bola, robot humanoid, robot abu, robot SAR, kapal, dan aerial vehicle. Semuanya punya ketertarikan masing-masing, mulai dari robot abu dengan misi unik yaitu robot untuk menanam tanaman dan robot untuk memasukkan bola ke dalam keranjang, hingga ke robot SAR yang ditujukkan untuk robot penyelamatan dengan arena berbentuk perbukitan dengan berbagai macam medan dan rintangan. Penulis sendiri tertarik dengan bidang yang mungkin jarang dilirik khalayak umum yaitu aerial vehicle. Wadohh, apa lagi itu 😄
+
+Aerial vehicle merupakan istilah untuk sebuah kendaraan yang memiliki habitat di udara atau terbang. Mungkin kita terbiasa dengan istilah pesawat atau mesin terbang. Jenis dari aerial vehicle sendiri ada banyak mulai dari drone quadcopter, pesawat mapping, racing plane, racing drone, dan lain-lain. Nahh, untuk jenis aerial vehicle yang ada di UKM ini terbatas di drone quadcopter, racing plane, dan pesawat mapping atau biasa disebut fixed wing.
+
+Coyy, buat apa ada UKM yang buat ‘mainan’ pesawat kaya gituuu! Hold up, let me explain. Sebenarnya UKM ini tidak hanya membuat ‘mainan’ untuk ajang pamer atau sekadar punya. Namun, UKM ini berfokus pada ajang kompetisi yang diadakan oleh pusprenas bernama Kompetisi Robot Terbang Indonesia (KRTI). Di kompetisi ini terdapat banyak mata lomba, termasuk lomba terkait pesawat yang dibuat di UKM ini. Selain itu ada lomba technology development, di mana yang dilombakan adalah riset dari bagian terkecil pembangun pesawat seperti flight controller, motor, dan lain-lain.
+
+Woww, ternyata ada ya kompetisi seperti itu, emang ga mahal buat ikutan kaya gitu? Yaa mahal sih, makanya UKM ini disokong oleh pihak perguruan tinggi untuk biaya riset dan pengembangannya.
+
+Eitss, balik ke topik. Singkat cerita penulis masuk ke UKM robotik bidang aerial vehicle dan fokus pada pengembangan drone quadcopter. Penulis mendaftar sebagai seorang pemrogram. Selain pemrogram terdapat divisi elektrik, manufaktur, dan non-teknis.
+
+## Membuat Drone from Scratch, Apa Mungkin?
+
+Bisa dan sangat mungkin! Ya sebenarnya istilah scratch ini memiliki banyak pendapat. Ada orang yang menganggap from scratch itu mulai dari manufaktur rangka dan desainnya dilakukan secara mandiri dari nol. Yang by means, ini benar. Tapi untuk saat ini penulis dan teman-teman belum memiliki resource yang cukup untuk melakukan riset dan pengembangan hingga tingkat itu, tapi penulis yakin suatu saat nanti, tim ini dapat mengembangkan sendiri semua bagian itu. Jadi, scratch yang penulis maksud disini adalah kami membangun sebuah drone dari bagian-bagian yang terpisah dan tidak dalam kondisi terpasang dan tersusun seperti pada drone DJI.
+
+## Apa Aja yang Diperlukan untuk Membuat Drone?
+
+Membuat sebuah drone quadcopter sebenarnya tidak terlalu sulit dan tidak terlalu banyak parts-nya, namun parts ini akan disesuaikan atau bertambah seiring misi yang mau dicapai. Berikut adalah parts bare minimum untuk membuat sebuah drone menurut pengalaman penulis:
+
+1. **Frame / Rangka**
+   Yang paling krusial adalah frame atau rangka, karena bagaimana parts lain ditaruh bila tidak ada frame-nya, xixixi. Canda bos, frame ini penting karena selain frame tempat untuk menaruh parts lain, ia juga bertanggung jawab terbesar terkait kestabilan drone. Karena frame yang baik itu harus dibangun dengan perhitungan yang tepat baik dari hitungan diagonal arm, center of gravity (CG), penempatan parts, bahan yang digunakan, bobot frame, daya tahan, kelenturan bahan, dan banyak lagi kalau mau dilanjutin sampai jadi postingan sendiri. Yaa intinya frame ini mutlak dan harus yang cocok untuk kebutuhannya, karena beda kebutuhan beda juga pertimbangan dan perhitungannya.
+
+   {/*  ![Frame](https://www.researchgate.net/figure/Summary-of-typical-airframes-and-rotor-configurations-for-small-aerial-drones-Figure_fig1_293652511) */}
+
+2. **Flight Controller**
+   Flight controller kalau di manusia dianalogikan kaya otak-nya. Jadi yang menentukan motor mana yang harus lebih kencang agar drone stabil, motor mana yang dikurangi kecepatannya ketika manuver kanan-kiri-atas-bawah-depan-belakang, memproses input dari pengguna atau remote control, untuk mengetahui ketinggian berapa drone itu, hingga untuk mengecek status dan kesehatan parts lain itu lewat si flight controller ini.
+
+   {/*  ![Flight Controller](https://docs.px4.io/v1.15/en/hardware/reference_design.html) */}
+
+   Ada banyak merk dan firmware-nya, namun yang populer digunakan adalah merk Holybro, CUAV, Cube. Sedangkan untuk firmware yang biasa digunakan itu ada PX4, dan Ardupilot. Dan biasanya setiap flight controller ini bisa digunakan secara bebas, open source dan masif karena punya standar yang sama, yaitu standar bernama Pixhawk. Jadi walaupun berbeda vendor, namun mereka dapat menggunakan parts satu sama lain tidak terbatas pada vendor.
+
+3. **Motor**
+   Motor disini bukan motor Mio, Beat, atau Aerox. Motor disini adalah komponen yang digunakan untuk memutar baling-baling / propeller. Di dunia drone quadcopter umumnya menggunakan motor berjenis BLDC atau brushless direct current motor. Singkatnya dia adalah motor yang ditenagai oleh listrik dengan arus searah (direct current) tapi tanpa bagian sikat dan komutator kaya di dinamo Tamiya. Dengan itu dia bisa memiliki tingkat efisiensi yang tinggi, torsi besar dan jangka waktu penggunaan yang lebih lama dibanding motor DC konvensional.
+
+   {/*  ![Motor](https://www.brushless.com/brushless-gear-motor-vs-brushless-dc-motor) */}
+
+   Motor pun banyak variasi-nya, mulai dari nilai puncak Kv (konstan motor), ketebalannya, range sel baterai yang dapat diterima, dan masih banyak lagi.
+
+4. **Power Distribution Board (PDB)**
+   PDB adalah sebuah papan atau board PCB yang digunakan untuk mendistribusikan daya di drone. Jadi dari baterai masuk ke PDB dulu baru disalurkan ke flight controller, ESC kemudian ke motor dan perangkat-perangkat lain. Dia juga berfungsi sebagai pembatas agar setiap part mendapatkan suplai daya yang tepat, tidak terlalu besar atau terlalu kecil. Tepat sesuai yang dibutuhkan part tersebut. Yang populer dipakai biasanya merk Matek, Holybro, dan lain-lain.
+
+   {/*  ![PDB](https://intofpv.com/t-individual-esc-s-wiring-confusion) */}
+
+5. **Electronic Speed Controller (ESC)**
+   ESC adalah sebuah papan board PCB untuk mengatur pengontrol kecepatan dan putaran dari motor BLDC. Selain itu ESC juga berfungsi untuk mengubah arus DC menjadi AC dan sebagai perantara flight controller dan motor BLDC. Sehingga motor bisa berputar sesuai dengan tepat dan sesuai keinginan flight controller.
+
+   {/*  ![ESC](https://oscarliang.com/esc/) */}
+
+6. **Receiver**
+   Receiver atau penerima ini berfungsi sebagai alat komunikasi dengan transmitter atau pemancar, dalam hal ini biasanya menggunakan remote control. Bisa disebut receiver ini sebagai perantara komunikasi antara pengguna dengan sistem drone atau flight controller. Receiver ini juga memiliki banyak jenis dan spesifikasi, mulai dari frekuensi, jarak efektif, jenis antena, jenis protokol, jumlah channel dan lain-lain. Dan kembali lagi semua tergantung kebutuhannya.
+
+7. **Transmitter / Remote Control**
+   Transmitter adalah pemancar yang biasanya berfungsi untuk mengirim perintah ke drone secara wireless atau nirkabel atau tanpa kabel. Transmitter ini biasanya menggunakan remote control. Dari transmitter ini kita bisa mengirim perintah ke drone, seperti naik-turun-maju-mundur, manuver kanan-kiri-atas-bawah-depan-belakang, dan lainnya~
+
+8. **Propeller**
+   Propeller atau baling-baling berfungsi untuk menciptakan gaya dorong untuk mengangkat drone di udara. Propeller ini juga banyak macam dan jenisnya, ada toroidal, konvensional, 2 bilah, 3 bilah, 4 bilah, dan lain sebagainya.
+
+9. **GPS**
+   Global Positioning System atau GPS ini berfungsi sebagai variabel posisi / patokan untuk mengetahui posisi dari drone itu sendiri. Biasanya GPS mengembalikan 3 variabel sumbu yaitu \(x\), \(y\), \(z\) atau posisi longitudinal, lateral dan vertical.
+
+   {/*  ![GPS](https://cw.fel.cvut.cz/b221/courses/crl-courses/redcp/tasks/data_types) */}
+
+10. **Baterai**
+    Untuk menyimpan daya listrik yang dibutuhkan untuk setiap part pada drone. Umumnya drone menggunakan baterai berjenis lithium-ion polymer atau LiPo. Kembali lagi, baterai juga banyak spesifikasi dan jenisnya disesuaikan dengan kebutuhannya. Di baterai sendiri ada istilah skala C, skala S, kapasitas, daya, dan lain-lain.
+
+    {/*   ![Baterai](https://www.tytorobotics.com/blogs/articles/a-guide-to-lithium-polymer-batteries-for-drones) */}
+
+11. **Optical Flow (optional)**
+    Optical flow adalah suatu sensor yang biasanya dipasang di bagian bawah drone yang menggunakan infra merah dan kamera untuk mendeteksi perubahan kontras pada medan yang ada dibawahnya, sebagai salah satu variabel pembantu GPS untuk menentukan lokasi posisi drone. Dengan adanya optical flow dapat menambah tingkat kestabilan terbang pada drone.
+
+12. **Rangefinder (optional)**
+    Rangefinder bekerja dengan menggunakan infra merah, biasanya dipasang di bagian depan-belakang-kanan-kiri sebagai sensor tambahan dan memberi informasi ke flight controller untuk menghindari tabrakan atau collision.
+
+Dari sekian banyak parts yang ada di atas, tidak dapat berjalan dan bekerja semestinya apabila tidak dirakit dengan cermat dan tepat. Oleh karena itu semua penghubung part di atas harus dipastikan juga kualitasnya seperti kabel jumper Dupont, kabel AWG antara PDB dan baterai, setiap socket, setiap solderan harus dipastikan aman dan tahan terhadap guncangan atau impact agar tidak mudah putus.
+
+Masih banyak hal yang dapat dibahas dari membuat drone sendiri ini, karena tahap ini hanya mencakup bagian perangkat keras. Masih ada konfigurasi perangkat lunak, proses kalibrasi, proses setup GCS dengan drone, dan masih banyak lagi. Selain itu yang paling menarik adalah bagaimana studi kasus penggunaan drone ini pada real mission-nya atau setidaknya misi pada perlombaan. Oleh karena itu stay tuned untuk postingan selanjutnya yang akan membahas jenis studi kasus yang ada di dunia nyata atau di kompetisi~

@@ -1,8 +1,6 @@
 'use client';
 
-import { Section } from '@/components/common/section';
 import { Badge } from '@/components/ui/badge';
-import { Card } from '@/components/ui/card';
 import { formatDate } from '@/lib/date';
 import Image from 'next/image';
 import Link from 'next/link';
