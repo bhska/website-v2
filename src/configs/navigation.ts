@@ -3,6 +3,8 @@ export const navigation = [
   { href: '/experience', label: 'Experience' },
   { href: '/work', label: 'Work' },
   { href: '/blog', label: 'Blog' },
-  // { href: '/stack', label: 'Stack' },
+  { href: '/gallery', label: 'Gallery' },
+  // { href: '/achievement', label: 'Achievement' },
+  // { href: '/uses', label: 'Uses' },
   { href: '/contact', label: 'Contact' },
 ];

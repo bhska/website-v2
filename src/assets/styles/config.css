@@ -165,8 +165,9 @@
   --color-backdrop: var(--backdrop);
 
   /* Fonts */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: 'VCR OSD Mono', sans-serif;
+  --font-sans: 'Instrument Sans', sans-serif;
+  --font-serif: 'Instrument Sans', serif;
+  --font-mono: 'VCR OSD Mono', mono;
 
   /* Border Radius */
   --radius-sm: calc(var(--radius) - 4px);
@@ -175,8 +176,8 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   /* Animations */
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-accordion-down: accordion-down 0.7s ease-out;
+  --animate-accordion-up: accordion-up 0.7s ease-out;
   --animate-loading: loading 1s ease-in-out infinite;
   --animate-bar-pulse: bar-pulse 1s ease-in-out infinite;
 

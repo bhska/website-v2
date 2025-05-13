@@ -52,11 +52,14 @@ export default function RootLayout({
     >
       <head>
         <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/ranade" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/instrument-sans" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/inclusive-sans-2" rel="stylesheet" />
       </head>
-      <body className="bg-backdrop min-h-screen overflow-x-hidden font-sans antialiased">
+      <body className="bg-backdrop h-full min-h-screen overflow-x-hidden font-sans antialiased">
         <InteractivityProvider>
           <Header />
-          <div className="fixed top-0 right-0 left-0 z-40 container mx-auto h-[53px] border-b sm:h-[73px]" />
+          <div className="bg-backdrop/90 fixed top-0 right-0 left-0 z-40 container mx-auto h-[53px] border-b sm:h-[73px]" />
           <div className="h-[53px] sm:h-[73px]" />
           <main className="flex-1 divide-y sm:border-b">{children}</main>
           <Footer />

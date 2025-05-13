@@ -19,7 +19,7 @@ export const Header = () => {
 
   return (
     <>
-      <HeaderProvider className="bg-backdrop/90 fixed top-0 right-0 left-0 z-50 container mx-auto flex max-w-5xl items-center justify-between border-x-0 border-b px-4 py-2 backdrop-blur-md transition-all sm:py-4 md:border-x md:border-b-0">
+      <HeaderProvider className="bg-backdrop/30 fixed top-0 right-0 left-0 z-50 container mx-auto flex max-w-5xl items-center justify-between border-x-0 border-b px-4 py-2 backdrop-blur-sm transition-all sm:py-4 md:border-x md:border-b-0">
         <div className="w-32">
           <ViewAnimation
             initial={{ opacity: 0, translateY: -8 }}
