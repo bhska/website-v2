@@ -200,9 +200,9 @@ export const works = [
   {
     description: '',
     images: [
-      'https://bucket.bhsk.dev/warung-v2-1.png',
-      'https://bucket.bhsk.dev/warung-v2-2.png',
-      'https://bucket.bhsk.dev/warung-v2-3.png',
+      'https://bucket.bhsk.dev/drone-1.png',
+      'https://bucket.bhsk.dev/drone-2.png',
+      'https://bucket.bhsk.dev/drone-3.png',
     ],
     techStack: ['Python', 'Ardupilot & PX4', 'MissionPlanner', 'Pixhawk'],
     title: 'Autonomous Drone',
