@@ -68,7 +68,7 @@
   }
 
   .prose {
-    @apply !w-fit !text-xs md:!text-base;
+    @apply !w-fit !text-xs md:!text-sm;
   }
 
   .prose code::after,

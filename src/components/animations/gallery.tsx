@@ -35,7 +35,7 @@ function getFontSize(font: string): number {
 function createTextTexture(
   gl: GL,
   text: string,
-  font = 'bold 30px monospace',
+  font = 'bold 16px VCR Mono',
   color = 'black',
 ): { texture: Texture; width: number; height: number } {
   const canvas = document.createElement('canvas');
@@ -81,21 +81,14 @@ class Title {
   font: string;
   mesh!: Mesh;
 
-  constructor({
-    gl,
-    plane,
-    renderer,
-    text,
-    textColor = '#000',
-    font = '30px sans-serif',
-  }: TitleProps) {
+  constructor({ gl, plane, renderer, text, textColor = '#000', font }: TitleProps) {
     autoBind(this);
     this.gl = gl;
     this.plane = plane;
     this.renderer = renderer;
     this.text = text;
     this.textColor = textColor;
-    this.font = font;
+    this.font = font!;
     this.createMesh();
   }
 
@@ -299,7 +292,7 @@ class Media {
       transparent: true,
     });
     const img = new Image();
-    img.crossOrigin = 'anonymous';
+    // img.crossOrigin = 'anonymous';
     img.src = this.image;
     img.onload = () => {
       texture.image = img;
@@ -435,7 +428,7 @@ class App {
       bend = 1,
       textColor = '#ffffff',
       borderRadius = 0,
-      font = 'bold 30px DM Sans',
+      font = 'bold 30px VCR Mono',
     }: AppConfig,
   ) {
     document.documentElement.classList.remove('no-js');
@@ -536,6 +529,7 @@ class App {
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
     this.medias = this.mediasImages.map((data, index) => {
+      console.log(data, 'ini data');
       return new Media({
         geometry: this.planeGeometry,
         gl: this.gl,
@@ -665,7 +659,7 @@ const Gallery: React.FC<GalleryProps> = ({
   bend = 3,
   textColor = '#000',
   borderRadius = 0,
-  font = 'bold 30px VCR',
+  font = 'bold 30px VCR Mono',
   className = '',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -686,7 +680,10 @@ const Gallery: React.FC<GalleryProps> = ({
 
   return (
     <div
-      className={cn('h-full w-full cursor-grab overflow-hidden active:cursor-grabbing', className)}
+      className={cn(
+        'h-full w-full cursor-grab overflow-hidden !font-mono active:cursor-grabbing',
+        className,
+      )}
       ref={containerRef}
     />
   );

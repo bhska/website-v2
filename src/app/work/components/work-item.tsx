@@ -34,7 +34,7 @@ const WorkCard: React.FC<WorkCardProps> = ({
   const aspectRatio = useImageAspectRatio(imgRef);
 
   const isDesktopRatio = aspectRatio && aspectRatio > 1;
-  const isSingle = images.length === 1;
+  const isSingleImage = images.length === 1;
   const isMobile = useIsMobile();
   const plugin = React.useRef(Autoplay({ delay: 2000, stopOnInteraction: true, jump: false }));
 
@@ -116,8 +116,8 @@ const WorkCard: React.FC<WorkCardProps> = ({
                     ref={imgRef}
                     key={src}
                     alt={title}
-                    width={isDesktopRatio ? (isSingle ? 650 : 450) : 250}
-                    height={isDesktopRatio ? (isSingle ? 650 : 450) : 200}
+                    width={isDesktopRatio ? (isSingleImage ? 650 : 450) : 250}
+                    height={isDesktopRatio ? (isSingleImage ? 650 : 450) : 200}
                     src={src}
                   />
                 </CarouselItem>
@@ -128,14 +128,19 @@ const WorkCard: React.FC<WorkCardProps> = ({
           <CarouselNext />
         </Carousel>
       ) : (
-        <div className="bg-dashed group relative aspect-video rounded-2xl border border-neutral-300/20 bg-neutral-200/40 mask-b-from-100% transition duration-300 ease-in-out hover:bg-neutral-300">
+        <div
+          className={cn(
+            'bg-dashed group relative rounded-2xl border border-neutral-300/20 bg-neutral-200/40 mask-b-from-100% transition duration-300 ease-in-out hover:bg-neutral-300',
+            isSingleImage ? 'aspect-[16/6]' : 'aspect-video',
+          )}
+        >
           {images.map((src, index) => (
             <Image
               ref={imgRef}
               key={src}
               alt={title}
-              width={isDesktopRatio ? (isSingle ? 650 : 450) : 250}
-              height={isDesktopRatio ? (isSingle ? 650 : 450) : 200}
+              width={isDesktopRatio ? (isSingleImage ? 650 : 450) : 250}
+              height={isDesktopRatio ? (isSingleImage ? 650 : 450) : 200}
               src={src}
               className={cn(
                 getCustomClassNames(index),

@@ -19,10 +19,10 @@ export default function Home() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="bg-dashed flex aspect-video flex-col justify-center border-b p-10 md:aspect-square md:border-r md:border-b-0">
-              <h2 className="font-mono text-3xl font-medium sm:text-4xl md:text-5xl">
+              <h2 className="w-fit bg-white px-3 py-1 font-mono text-3xl font-medium sm:text-4xl md:text-5xl">
                 Azra Muhammad
               </h2>
-              <h2 className="font-mono text-3xl font-medium sm:text-4xl md:text-5xl">
+              <h2 className="mt-2 w-fit bg-white px-3 py-1 font-mono text-3xl font-medium sm:text-4xl md:text-5xl">
                 Bhaskarogra
               </h2>
 
@@ -55,9 +55,9 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <Gallery
-            items={galleryItems.slice(0, 5)}
-            bend={1}
-            textColor="#000"
+            items={galleryItems}
+            bend={2}
+            textColor="#333"
             borderRadius={0.05}
             className="absolute bottom-0 left-0 z-10 h-5/6 w-full md:h-5/6"
           />
