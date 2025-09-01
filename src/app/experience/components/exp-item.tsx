@@ -5,7 +5,6 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
 
 export interface ExpItemProps {
   status: string[];
@@ -75,7 +74,7 @@ export default function ExpItem({
                 ))}
               </div>
 
-              <a href={link} target='_blank' className="hover:underline transition transition-all">Visit</a>
+              {link && <a href={link} target='_blank' className="hover:underline transition transition-all text-sm">Visit</a>}
             </div>
           </div>
         </ViewAnimation>
