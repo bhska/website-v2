@@ -3,7 +3,22 @@ import ExpItem, { ExpItemProps } from './exp-item';
 
 const items: ExpItemProps[] = [
   {
-    status: ['hybrid', 'full-time'],
+    status: ['hybrid'],
+    period: '2025 - Present',
+    title: 'AI4CEO',
+    description: (
+      <>
+        <p className="prose">
+          As the principal architect and lead engineer for AI4CEO, I built a customizable LLM-powered system integrating multiple “expert” modules—such as finance, HR, strategy, and legal—to support comprehensive decision-making for corporate executives.
+        </p>
+      </>
+    ),
+    role: 'Lead Software Engineer',
+    image: '/images/ai4ceo.svg',
+    link: 'https://ai4.ceo/?ref=bhsk.dev',
+  },
+  {
+    status: ['hybrid'],
     period: '2024 - Present',
     title: 'Lazuardy',
     description: (
@@ -23,7 +38,7 @@ const items: ExpItemProps[] = [
   },
   {
     status: ['onsite', 'internship'],
-    period: '2024 - Present',
+    period: '2024 - 2025',
     title: 'Unit Pengelola dan Pelayanan Teknologi Informasi (UP2TI) FSM Universitas Diponegoro',
     description: (
       <>
@@ -54,7 +69,6 @@ const items: ExpItemProps[] = [
     ),
     image: '/images/undip.webp',
     role: 'Full-Stack Engineer • Network Engineer • System Administrator',
-    link: 'https://example.com/project1',
   },
   {
     status: ['remote', 'freelance'],
@@ -77,7 +91,7 @@ const items: ExpItemProps[] = [
     ),
     role: 'Front-End Engineer',
     image: '/images/dm20.webp',
-    link: 'https://example.com/project2',
+    link: 'https://directmail2.com/?ref=bhsk.dev',
     position: 'reverse',
   },
   {

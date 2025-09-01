@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { ViewAnimation } from '@/providers/view-animation';
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 
 export interface ExpItemProps {
   status: string[];
@@ -13,7 +14,7 @@ export interface ExpItemProps {
   title: string;
   description: string | React.ReactNode;
   image: string | StaticImageData;
-  link: string;
+  link?: string;
   role: string;
   items?: React.ReactNode[];
 }
@@ -64,7 +65,6 @@ export default function ExpItem({
             <div className="flex flex-col gap-2">
               <span className="text-xl font-medium">{title}</span>
               <small className="text-muted-foreground">{role}</small>
-
               <span className="text-xs">{period}</span>
 
               <div className="text-muted-foreground flex gap-2">
@@ -74,6 +74,8 @@ export default function ExpItem({
                   </Badge>
                 ))}
               </div>
+
+              <a href={link} target='_blank' className="hover:underline transition transition-all">Visit</a>
             </div>
           </div>
         </ViewAnimation>
