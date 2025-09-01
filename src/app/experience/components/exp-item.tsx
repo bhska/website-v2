@@ -62,7 +62,9 @@ export default function ExpItem({
             </div>
 
             <div className="flex flex-col gap-2">
-              <span className="text-xl font-medium">{title}</span>
+              <span className="text-xl font-medium">
+                {link ? <a href={link} className='hover:underline cursor-pointer' target='_blank'>{title}</a> : title}   
+              </span>
               <small className="text-muted-foreground">{role}</small>
               <span className="text-xs">{period}</span>
 
@@ -74,7 +76,6 @@ export default function ExpItem({
                 ))}
               </div>
 
-              {link && <a href={link} target='_blank' className="hover:underline transition transition-all text-sm">Visit</a>}
             </div>
           </div>
         </ViewAnimation>
