@@ -283,8 +283,8 @@ class Media {
       `,
       uniforms: {
         tMap: { value: texture },
-        uPlaneSizes: { value: [0, 0] },
-        uImageSizes: { value: [0, 0] },
+        uPlaneSizes: { value: [1, 1] },
+        uImageSizes: { value: [1, 1] },
         uSpeed: { value: 0 },
         uTime: { value: 100 * Math.random() },
         uBorderRadius: { value: this.borderRadius },
@@ -529,11 +529,15 @@ class App {
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
     this.medias = this.mediasImages.map((data, index) => {
-      console.log(data, 'ini data');
+      // Use proxy for external images to avoid CORS issues with WebGL
+      const imageUrl = data.image.startsWith('http')
+        ? `/api/proxy-image?url=${encodeURIComponent(data.image)}`
+        : data.image;
+
       return new Media({
         geometry: this.planeGeometry,
         gl: this.gl,
-        image: data.image,
+        image: imageUrl,
         index,
         length: this.mediasImages.length,
         renderer: this.renderer,
