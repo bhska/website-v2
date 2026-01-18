@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { HighlightedWorks } from '@/components/sections/highlighted-works';
+import { SpotifySection } from '@/components/sections/spotify-section';
 import { Section } from '@/components/common/section';
 import { ViewAnimation } from '@/providers/view-animation';
 import { galleryItems } from '@/configs/gallery';
@@ -102,8 +103,6 @@ export default function Home() {
           delay={0.4}
           viewport={{ once: true }}
         >
-
-
           <Section className="relative flex h-[50svh] flex-col items-center gap-4 pt-6">
             {/*<span className="font-mono text-3xl">Gallery</span>*/}
             <span className="prose text-muted-foreground px-4 text-center text-sm">
@@ -151,6 +150,8 @@ export default function Home() {
           </div>
         </ViewAnimation>
       </Section>
+
+      <SpotifySection />
     </>
   );
 }

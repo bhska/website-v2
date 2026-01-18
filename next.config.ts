@@ -27,6 +27,17 @@ const nextConfig: NextConfig = {
         hostname: 'pub-04a7d9d106494ffdb1f0a353e63a9891.r2.dev',
         port: '',
       },
+      // Spotify CDN hostnames
+      {
+        protocol: 'https',
+        hostname: '*.scdn.co',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.spotifycdn.com',
+        port: '',
+      },
     ],
   },
   headers: async () => [

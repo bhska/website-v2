@@ -180,6 +180,7 @@
   --animate-accordion-up: accordion-up 0.7s ease-out;
   --animate-loading: loading 1s ease-in-out infinite;
   --animate-bar-pulse: bar-pulse 1s ease-in-out infinite;
+  --animate-soundbar: soundbar 0.8s ease-in-out infinite;
 
   /* Effects */
   --ease-in-expo: cubic-bezier(0.32, 0.72, 0, 1);
@@ -217,4 +218,24 @@
       margin-top: 0;
     }
   }
+
+  @keyframes soundbar {
+    0%,
+    100% {
+      transform: scaleY(0.3);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+}
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
