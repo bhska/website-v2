@@ -19,14 +19,12 @@ const Achievement = () => {
           <div className="bg-dashed flex h-full w-full flex-col border-b p-10 md:aspect-square md:border-r md:border-b-0">
             <div className="sticky top-28">
               <h2 className="font-mono text-3xl font-medium sm:text-4xl md:text-5xl">
-                Achievement
+                Certificates
               </h2>
 
               <p className="prose mt-4">
-                "An ambitious scholar and lifelong learner, dedicated to the pursuit of personal and
-                academic achievement, consistently striving to transform challenges into stepping
-                stones for growth while inspiring others to unlock their full potential through
-                perseverance and creativity."
+                An ambitious scholar and lifelong learner, dedicated to the pursuit of personal and
+                academic achievement.
               </p>
             </div>
           </div>

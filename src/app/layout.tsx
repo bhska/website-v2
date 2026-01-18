@@ -75,7 +75,7 @@ export default function RootLayout({
       <body className="bg-backdrop flex min-h-dvh flex-col overflow-x-hidden font-sans antialiased">
         <InteractivityProvider>
           <Header />
-          <div className="bg-backdrop/90 fixed top-0 right-0 left-0 z-40 container mx-auto h-[53px] border-b sm:h-[73px]" />
+          <div className="bg-backdrop/90 fixed top-0 right-0 left-0 z-40 mx-auto h-[53px] border-b sm:h-[73px]" />
           <div className="h-[53px] sm:h-[73px]" />
           <main className="flex-1 divide-y sm:border-b">{children}</main>
           <Footer />

@@ -26,7 +26,7 @@ export const Footer = () => (
           delay={0.8}
         >
           <p className="text-muted-foreground text-xs whitespace-nowrap md:text-sm">
-            &copy; {new Date().getFullYear()} Muhammad Bhaska. All rights reserved.
+            &copy; {new Date().getFullYear()} Bhaska. All rights reserved.
           </p>
         </ViewAnimation>
       </div>
