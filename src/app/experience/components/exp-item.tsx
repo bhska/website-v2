@@ -58,15 +58,33 @@ export default function ExpItem({
         >
           <div className="sticky top-24 flex flex-col gap-4 pb-8 md:flex-row md:items-center">
             <div className="relative flex aspect-square size-24 items-center justify-center">
-              <Image src={image} width="300" height="300" alt={title} className="size-max" />
+              <Image
+                src={image}
+                width="300"
+                height="300"
+                alt={`${title} logo`}
+                className="size-max"
+              />
             </div>
 
             <div className="flex flex-col gap-2">
               <span className="text-xl font-medium">
-                {link ? <a href={link} className='hover:underline cursor-pointer' target='_blank'>{title}</a> : title}   
+                {link ? (
+                  <a
+                    href={link}
+                    className="cursor-pointer hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit ${title} website`}
+                  >
+                    {title}
+                  </a>
+                ) : (
+                  title
+                )}
               </span>
-              <small className="text-muted-foreground">{role}</small>
-              <span className="text-xs">{period}</span>
+              <span className="text-muted-foreground text-sm">{role}</span>
+              <span className="text-muted-foreground text-xs">{period}</span>
 
               <div className="text-muted-foreground flex gap-2">
                 {status.map((item) => (
@@ -75,7 +93,6 @@ export default function ExpItem({
                   </Badge>
                 ))}
               </div>
-
             </div>
           </div>
         </ViewAnimation>

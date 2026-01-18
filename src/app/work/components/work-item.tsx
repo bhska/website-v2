@@ -23,14 +23,14 @@ interface WorkCardProps {
     client: string;
     category: string;
     year: string;
+    url?: string;
   };
 }
 
 const WorkCard: React.FC<WorkCardProps> = ({
-  data: { title, description, images, techStack, client, category, year },
+  data: { title, description, images, techStack, client, category, year, url },
 }) => {
-  const imgRef = useRef<HTMLImageElement>(null);
-  // @ts-ignore
+  const imgRef = useRef<HTMLImageElement>(null!);
   const aspectRatio = useImageAspectRatio(imgRef);
 
   const isDesktopRatio = aspectRatio && aspectRatio > 1;
@@ -111,11 +111,10 @@ const WorkCard: React.FC<WorkCardProps> = ({
           <div className="bg-dashed flex items-center justify-center rounded-2xl border border-neutral-300/20 p-5">
             <CarouselContent>
               {images.map((src, index) => (
-                <CarouselItem key={index}>
+                <CarouselItem key={src}>
                   <Image
                     ref={imgRef}
-                    key={src}
-                    alt={title}
+                    alt={`${title} project screenshot ${index + 1}`}
                     width={isDesktopRatio ? (isSingleImage ? 650 : 450) : 250}
                     height={isDesktopRatio ? (isSingleImage ? 650 : 450) : 200}
                     src={src}
@@ -138,7 +137,7 @@ const WorkCard: React.FC<WorkCardProps> = ({
             <Image
               ref={imgRef}
               key={src}
-              alt={title}
+              alt={`${title} project screenshot ${index + 1}`}
               width={isDesktopRatio ? (isSingleImage ? 650 : 450) : 250}
               height={isDesktopRatio ? (isSingleImage ? 650 : 450) : 200}
               src={src}
@@ -169,16 +168,16 @@ const WorkCard: React.FC<WorkCardProps> = ({
 
       {/* <p className="mb-2 text-gray-300">{description}</p> */}
 
-      {/* {url && (
+      {url && (
         <a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
+          className="mt-2 inline-block text-blue-500 hover:underline"
         >
-          Lihat Demo
+          Visit Project
         </a>
-      )} */}
+      )}
     </div>
   );
 };

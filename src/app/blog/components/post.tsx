@@ -21,7 +21,8 @@ export default function Post({ post, thumbnail }: PostProps) {
             width={20}
             height={640}
             src={post.metadata.image}
-            alt={'Thumbnail of ' + post.metadata.title}
+            alt=""
+            className="decoration-muted-foreground"
           />
         )}
 
@@ -34,7 +35,7 @@ export default function Post({ post, thumbnail }: PostProps) {
             <div className="flex gap-2">
               {tags.map((tag: string, index: number) =>
                 index < 3 ? (
-                  <Badge key={index} variant="outline">
+                  <Badge key={tag} variant="outline">
                     {tag}
                   </Badge>
                 ) : null,

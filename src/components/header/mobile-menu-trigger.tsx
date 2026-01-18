@@ -9,7 +9,12 @@ export const MobileMenuTrigger = () => {
   const [isOpen, setIsOpen] = useAtom(mobileMenuOpen);
 
   return (
-    <Button variant="outline" size="icon" onClick={() => setIsOpen(!isOpen)}>
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={() => setIsOpen(!isOpen)}
+      aria-label={isOpen ? 'Close menu' : 'Open menu'}
+    >
       <MenuIcon size={16} className="text-muted-foreground" />
     </Button>
   );

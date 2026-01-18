@@ -22,7 +22,9 @@ export function Posts({ range, columns = '1', thumbnail = false }: PostsProps) {
   return (
     <>
       {displayedBlogs.length > 0 && (
-        <div className={cn('relative grid grid-cols-1', `md:grid-cols-[${columns}]`)}>
+        <div
+          className={cn('relative grid grid-cols-1', columns !== '1' && `md:grid-cols-${columns}`)}
+        >
           <div className="absolute -top-3 -left-3 z-10 hidden h-6 sm:block">
             <Cross />
           </div>

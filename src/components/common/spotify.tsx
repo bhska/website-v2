@@ -36,7 +36,7 @@ export const Spotify = async (): Promise<ReactElement> => {
           /> */}
           <Image
             src={song.image}
-            alt=""
+            alt={`Album cover for "${song.name}" by ${song.artist}`}
             width={640}
             height={640}
             className="absolute top-1/2 left-1/2 aspect-square h-[50px] w-auto shrink-0 -translate-x-1/2 -translate-y-1/2 -rotate-12 rounded-full"
