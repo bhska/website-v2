@@ -18,7 +18,7 @@ interface WorkCardProps {
   data: {
     title: string;
     description: string;
-    images: string[];
+    images?: string[];
     techStack: string[];
     client: string;
     category: string;
@@ -34,12 +34,14 @@ const WorkCard: React.FC<WorkCardProps> = ({
   const aspectRatio = useImageAspectRatio(imgRef);
 
   const isDesktopRatio = aspectRatio && aspectRatio > 1;
-  const isSingleImage = images.length === 1;
+  const isSingleImage = (images?.length ?? 0) === 1;
   const isMobile = useIsMobile();
   const plugin = React.useRef(Autoplay({ delay: 2000, stopOnInteraction: true, jump: false }));
 
+  const imageList = images ?? [];
+
   const getCustomClassNames = (index: number) => {
-    switch (images.length) {
+    switch (imageList.length) {
       case 1:
         return cn(
           isDesktopRatio
@@ -110,7 +112,7 @@ const WorkCard: React.FC<WorkCardProps> = ({
         >
           <div className="bg-dashed flex items-center justify-center rounded-2xl border border-neutral-300/20 p-5">
             <CarouselContent>
-              {images.map((src, index) => (
+              {imageList.map((src, index) => (
                 <CarouselItem key={src}>
                   <Image
                     ref={imgRef}
@@ -133,7 +135,7 @@ const WorkCard: React.FC<WorkCardProps> = ({
             isSingleImage ? 'aspect-[16/6]' : 'aspect-video',
           )}
         >
-          {images.map((src, index) => (
+          {imageList.map((src, index) => (
             <Image
               ref={imgRef}
               key={src}
