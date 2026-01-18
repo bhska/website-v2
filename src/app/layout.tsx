@@ -51,6 +51,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet" />
         <link href="https://fonts.cdnfonts.com/css/ranade" rel="stylesheet" />
         <link href="https://fonts.cdnfonts.com/css/instrument-sans" rel="stylesheet" />

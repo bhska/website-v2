@@ -1,13 +1,58 @@
 'use client';
 
-import Gallery from '@/components/animations/gallery';
-import Lanyard from '@/components/animations/lanyard';
+import dynamic from 'next/dynamic';
 import { Section } from '@/components/common/section';
 import { ViewAnimation } from '@/providers/view-animation';
 import { galleryItems } from '@/configs/gallery';
 import Link from 'next/link';
+import { useState, useEffect, Suspense } from 'react';
+
+const Lanyard = dynamic(() => import('@/components/animations/lanyard'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center bg-neutral-100">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-neutral-600" />
+    </div>
+  ),
+});
+
+const Gallery = dynamic(() => import('@/components/animations/gallery'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-full w-full items-center justify-center bg-neutral-100">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-neutral-600" />
+    </div>
+  ),
+});
+
+function LanyardWrapper() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="flex h-full w-full items-center justify-center bg-neutral-100">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-neutral-600" />
+      </div>
+    );
+  }
+
+  return <Lanyard position={[1, 0, 12]} />;
+}
 
 export default function Home() {
+  const [showGallery, setShowGallery] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowGallery(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <Section>
@@ -41,7 +86,7 @@ export default function Home() {
             </div>
 
             <div className="aspect-square">
-              <Lanyard position={[1, 0, 12]} />
+              <LanyardWrapper />
             </div>
           </div>
         </ViewAnimation>
@@ -54,13 +99,15 @@ export default function Home() {
           delay={0.4}
           viewport={{ once: true }}
         >
-          <Gallery
-            items={galleryItems}
-            bend={2}
-            textColor="#333"
-            borderRadius={0.05}
-            className="absolute bottom-0 left-0 z-10 h-5/6 w-full md:h-5/6"
-          />
+          {showGallery && (
+            <Gallery
+              items={galleryItems}
+              bend={2}
+              textColor="#333"
+              borderRadius={0.05}
+              className="absolute bottom-0 left-0 z-10 h-5/6 w-full md:h-5/6"
+            />
+          )}
 
           <Section className="relative flex h-[90svh] flex-col items-center gap-4 pt-6">
             <span className="font-mono text-3xl">Gallery</span>

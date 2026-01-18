@@ -1,9 +1,44 @@
-import SpotlightCard from '@/components/animations/spotlight-card';
+'use client';
+
+import dynamic from 'next/dynamic';
 import HeroSection from '@/components/common/hero-section';
 import { Section } from '@/components/common/section';
 import { galleryItems } from '@/configs/gallery';
 import { ViewAnimation } from '@/providers/view-animation';
 import Image from 'next/image';
+
+const SpotlightCard = dynamic(() => import('@/components/animations/spotlight-card'), {
+  ssr: false,
+  loading: () => <div className="h-48 w-full animate-pulse bg-neutral-200" />,
+});
+
+function GalleryContent() {
+  return (
+    <div className="columns-1 gap-0 p-4 md:columns-2">
+      {galleryItems.map((item) => (
+        <SpotlightCard key={item.text} className="group" spotlightColor="rgba(0, 0, 0, 0.2)">
+          <div
+            key={item.text}
+            className="relative flex flex-col grayscale transition duration-150 ease-in-out group-hover:scale-101 hover:grayscale-0"
+          >
+            <Image
+              src={item.image}
+              alt={item.text}
+              width={600}
+              height={200}
+              loading="lazy"
+              decoding="async"
+              className="h-auto w-full"
+            />
+            <div className="absolute top-0 right-0 bottom-0 left-0 z-50 flex items-end bg-black/20 p-4 transition duration-150 ease-in-out group-hover:bg-black/0">
+              <p className="text-sm text-white italic">{item.text}</p>
+            </div>
+          </div>
+        </SpotlightCard>
+      ))}
+    </div>
+  );
+}
 
 export default function Gallery() {
   return (
@@ -20,21 +55,7 @@ export default function Gallery() {
         viewport={{ once: true }}
       >
         <Section>
-          <div className="columns-1 gap-0 p-4 md:columns-2">
-            {galleryItems.map((item) => (
-              <SpotlightCard key={item.text} className="group" spotlightColor="rgba(0, 0, 0, 0.2)">
-                <div
-                  key={item.text}
-                  className="relative flex flex-col grayscale transition duration-150 ease-in-out group-hover:scale-101 hover:grayscale-0"
-                >
-                  <Image src={item.image} alt={item.text} width={600} height={200} />
-                  <div className="absolute top-0 right-0 bottom-0 left-0 z-50 flex items-end bg-black/20 p-4 transition duration-150 ease-in-out group-hover:bg-black/0">
-                    <p className="text-sm text-white italic">{item.text}</p>
-                  </div>
-                </div>
-              </SpotlightCard>
-            ))}
-          </div>
+          <GalleryContent />
         </Section>
       </ViewAnimation>
     </>
