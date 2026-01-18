@@ -1,5 +1,65 @@
 export const works = [
   {
+    description:
+      'Document management system for Faculty of Science and Mathematics at Diponegoro University with workflow automation and digital archives.',
+    techStack: ['Next.js', 'Hono', 'Turborepo', 'TypeScript'],
+    title: 'DMS - FSM Undip',
+    client: 'Fakultas Sains dan Matematika Universitas Diponegoro',
+    year: '2025',
+    category: 'Web',
+    participation: 'Full-Stack Developer',
+  },
+  {
+    description:
+      'Web font platform with modern monorepo architecture using Turborepo for efficient builds and Next.js for optimal performance.',
+    techStack: ['Next.js', 'Turborepo', 'TypeScript', 'TailwindCSS'],
+    title: 'Zingfont',
+    client: 'Zingfont',
+    year: '2025',
+    category: 'Web',
+    participation: 'Lead Developer',
+  },
+  {
+    description:
+      'Creative agency landing page built with WordPress and Bricks page builder, featuring modern design and smooth animations.',
+    techStack: ['WordPress', 'Bricks Editor'],
+    title: 'Creatype Studio Landing Page',
+    client: 'Creatype Studio',
+    year: '2025',
+    category: 'Web',
+    participation: 'Frontend Developer',
+  },
+  {
+    description:
+      'Marketing landing page for AI platform with responsive design and interactive elements.',
+    techStack: ['HTML', 'TailwindCSS', 'JavaScript'],
+    title: 'DM20.AI Landing Page',
+    client: 'DirectMail 2.0',
+    year: '2025',
+    category: 'Web',
+    participation: 'Frontend Developer',
+  },
+  {
+    description:
+      'Progressive web application for cryptocurrency exchange with real-time data, wallet integration, and seamless trading experience.',
+    techStack: ['Vite', 'TailwindCSS', 'Shadcn UI', 'TypeScript'],
+    title: 'Nommia PWA/Mobile Web App',
+    client: 'Nommia',
+    year: '2025',
+    category: 'Mobile',
+    participation: 'Full-Stack Developer',
+  },
+  {
+    description:
+      'Desktop web application for cryptocurrency exchange featuring advanced trading charts, order management, and portfolio tracking.',
+    techStack: ['Vite', 'TailwindCSS', 'Shadcn UI', 'TypeScript'],
+    title: 'Nommia Desktop Web App',
+    client: 'Nommia',
+    year: '2025',
+    category: 'Web',
+    participation: 'Full-Stack Developer',
+  },
+  {
     description: '',
     images: ['https://bucket.bhsk.dev/ai4ceo-1.png'],
     techStack: ['Nextjs', 'React', 'Typescript', 'TailwindCSS', 'Vercel', 'Supabase', 'OpenAI'],
@@ -73,13 +133,14 @@ export const works = [
     category: 'Web, Mobile',
   },
   {
-    description: '',
-    images: ['https://bucket.bhsk.dev/monoxide-1.png'],
+    description:
+      'Competition website for Technocorner 2022 featuring event information, registration, and participant dashboard.',
     techStack: ['Nextjs', 'React', 'Typescript', 'TailwindCSS', 'Vercel'],
     title: 'Monoxide',
     client: 'Technocorner 2022',
-    year: '2025',
+    year: '2022',
     category: 'Web',
+    participation: 'Frontend Developer',
   },
   {
     description: '',
@@ -99,13 +160,14 @@ export const works = [
     category: 'Web',
   },
   {
-    description: '',
-    images: ['https://bucket.bhsk.dev/alaise-1.png'],
+    description:
+      'Point of sales mobile application for restaurant management with order tracking, payment integration, and inventory management.',
     techStack: ['Flutter', 'Dart', 'Firebase', 'Cloud Functions'],
     title: 'Alaise By The Lake Point of Sales App',
     client: 'Alaise By The Lake',
-    year: '2024',
+    year: '2025',
     category: 'Mobile',
+    participation: 'Mobile Developer',
   },
   {
     description: '',
