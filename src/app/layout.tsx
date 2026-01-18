@@ -22,6 +22,20 @@ export async function generateMetadata() {
       siteName: `${person.firstName}'s Portfolio`,
       locale: 'en_US',
       type: 'website',
+      images: [
+        {
+          url: '/api/og',
+          width: 1200,
+          height: 630,
+          alt: `${person.firstName}'s Portfolio`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${person.firstName}'s Portfolio`,
+      description: `Portfolio website showcasing ${person.firstName}'s work.`,
+      images: ['/api/og'],
     },
     robots: {
       index: true,
