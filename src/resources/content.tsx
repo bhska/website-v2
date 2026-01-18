@@ -48,14 +48,9 @@ const contact = [
     link: 'https://www.instagram.com/bhskaaa',
   },
   {
-    name: 'Work Email',
-    icon: 'work-email',
-    link: 'bhaska@lazuardy.tech',
-  },
-  {
     name: 'Email',
     icon: 'personal-email',
-    link: 'me@bhsk.dev',
+    link: 'mailto:me@bhsk.dev',
   },
 ];
 
