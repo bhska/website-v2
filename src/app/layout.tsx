@@ -51,12 +51,12 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://fonts.cdnfonts.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet" />
-        <link href="https://fonts.cdnfonts.com/css/ranade" rel="stylesheet" />
-        <link href="https://fonts.cdnfonts.com/css/instrument-sans" rel="stylesheet" />
-        <link href="https://fonts.cdnfonts.com/css/inclusive-sans-2" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Figtree:wght@300..900&family=Google+Sans+Mono:wght@400..700&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body className="bg-backdrop h-full min-h-screen overflow-x-hidden font-sans antialiased">
         <InteractivityProvider>

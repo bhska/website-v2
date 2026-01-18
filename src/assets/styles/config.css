@@ -165,9 +165,9 @@
   --color-backdrop: var(--backdrop);
 
   /* Fonts */
-  --font-sans: 'Instrument Sans', sans-serif;
-  --font-serif: 'Instrument Sans', serif;
-  --font-mono: 'VCR OSD Mono', mono;
+  --font-sans: 'Figtree', sans-serif;
+  --font-serif: 'Google Sans Mono', serif;
+  --font-mono: 'Google Sans Mono', monospace;
 
   /* Border Radius */
   --radius-sm: calc(var(--radius) - 4px);
