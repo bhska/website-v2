@@ -166,8 +166,8 @@
 
   /* Fonts */
   --font-sans: 'Figtree', sans-serif;
-  --font-serif: 'Google Sans Mono', serif;
-  --font-mono: 'Google Sans Mono', monospace;
+  --font-serif: 'Figtree', serif;
+  --font-mono: 'Figtree', monospace;
 
   /* Border Radius */
   --radius-sm: calc(var(--radius) - 4px);
