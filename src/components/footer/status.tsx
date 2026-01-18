@@ -76,18 +76,31 @@ export const Status = async () => {
 
     const { data } = (await response.json()) as BetterStackResponse;
 
-    const status =
-      data.filter((monitor) => monitor.attributes.status === 'up').length / data.length;
-
-    if (status === 0) {
-      statusColor = 'bg-destructive';
-      statusLabel = 'Degraded performance';
-    } else if (status < 1) {
-      statusColor = 'bg-warning';
-      statusLabel = 'Partial outage';
+    if (data.length === 0) {
+      statusColor = 'bg-muted-foreground';
+      statusLabel = 'No monitors configured';
     } else {
-      statusColor = 'bg-success';
-      statusLabel = 'All systems normal';
+      const upCount = data.filter((m) => m.attributes.status === 'up').length;
+      const downCount = data.filter((m) => m.attributes.status === 'down').length;
+      const maintenanceCount = data.filter((m) => m.attributes.status === 'maintenance').length;
+
+      if (downCount === data.length) {
+        // All monitors are down
+        statusColor = 'bg-destructive';
+        statusLabel = 'Degraded performance';
+      } else if (downCount > 0) {
+        // Some monitors are down
+        statusColor = 'bg-warning';
+        statusLabel = 'Partial outage';
+      } else if (maintenanceCount > 0 && upCount === 0) {
+        // All in maintenance
+        statusColor = 'bg-muted-foreground';
+        statusLabel = 'Under maintenance';
+      } else {
+        // All systems operational (up, validating, or pending)
+        statusColor = 'bg-success';
+        statusLabel = 'All systems normal';
+      }
     }
   } catch {
     statusColor = 'bg-muted-foreground';
