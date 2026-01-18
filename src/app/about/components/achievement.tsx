@@ -5,6 +5,7 @@ import { Section } from '../../../components/common/section';
 import { achievement } from '@/configs/achievement';
 import Image from 'next/image';
 import useNextBlurhash from 'use-next-blurhash';
+import Autoplay from 'embla-carousel-autoplay';
 import {
   Carousel,
   CarouselContent,
@@ -69,13 +70,20 @@ const Achievement = () => {
                 align: 'start',
                 loop: true,
               }}
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                  stopOnInteraction: true,
+                  stopOnMouseEnter: true,
+                }),
+              ]}
               className="w-full"
             >
               <CarouselContent className="-ml-2">
                 {achievement.map((item) => (
                   <CarouselItem key={item.title} className="basis-[85%] pl-2">
-                    <div className="group relative flex h-auto w-full flex-col">
-                      <div className="bg-dashed flex justify-center rounded-lg p-4">
+                    <div className="group relative flex h-full w-full flex-col">
+                      <div className="bg-dashed flex h-full items-center justify-center rounded-lg p-4">
                         {item.image && (
                           <Image
                             src={item.image}
@@ -83,7 +91,7 @@ const Achievement = () => {
                             height={300}
                             alt={item.title}
                             blurDataURL={blurDataUrl}
-                            className="rounded"
+                            className="h-auto w-full rounded object-contain"
                           />
                         )}
                       </div>
