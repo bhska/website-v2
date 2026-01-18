@@ -72,7 +72,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-backdrop h-full min-h-screen overflow-x-hidden font-sans antialiased">
+      <body className="bg-backdrop flex min-h-dvh flex-col overflow-x-hidden font-sans antialiased">
         <InteractivityProvider>
           <Header />
           <div className="bg-backdrop/90 fixed top-0 right-0 left-0 z-40 container mx-auto h-[53px] border-b sm:h-[73px]" />
