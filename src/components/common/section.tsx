@@ -5,7 +5,9 @@ import { ViewAnimation } from '@/providers/view-animation';
 import type { HTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 
-type SectionProps = HTMLAttributes<HTMLDivElement>;
+type SectionProps = HTMLAttributes<HTMLDivElement> & {
+  showTopCross?: boolean;
+};
 
 export const Cross = () => (
   <div className="relative h-6 w-6">
@@ -24,10 +26,21 @@ export const Cross = () => (
   </div>
 );
 
-export const Section = ({ children, className, ...props }: SectionProps) => (
+export const Section = ({ children, className, showTopCross, ...props }: SectionProps) => (
   <section {...props}>
     <div className="relative container mx-auto max-w-5xl">
       <div className={cn('sm:border-x', className)}>{children}</div>
+
+      {showTopCross && (
+        <>
+          <div className="absolute -top-3 -left-3 z-10 hidden h-6 sm:block">
+            <Cross />
+          </div>
+          <div className="absolute -top-3 -right-3 z-10 hidden h-6 sm:block">
+            <Cross />
+          </div>
+        </>
+      )}
 
       <div className="absolute -bottom-3 -left-3 z-10 hidden h-6 sm:block">
         <Cross />

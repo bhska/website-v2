@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <>
-      <Section>
+      <Section showTopCross>
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
