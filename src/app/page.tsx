@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { HighlightedWorks } from '@/components/sections/highlighted-works';
 import { SpotifySection } from '@/components/sections/spotify-section';
 import { Section } from '@/components/common/section';
@@ -37,23 +38,53 @@ export default function Home() {
           delay={0.2}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col items-start justify-center gap-6 py-8">
-            <h2 className="font-mono text-4xl font-medium md:text-5xl">
-              Azra Muhammad Bhaskarogra
-            </h2>
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            {/* Text Content */}
+            <div className="flex flex-col justify-center gap-6 lg:col-span-5">
+              <h2 className="font-mono text-4xl font-medium md:text-5xl">
+                Azra Muhammad Bhaskarogra
+              </h2>
 
-            <p className="prose text-muted-foreground max-w-2xl">
-              An inquisitive software artisan and digital conjurer, passionately immersed in the
-              intricate symphony of codecraft, perpetually driven by a relentless quest for
-              computational elegance and interactive ingenuity.
-            </p>
+              <p className="prose text-muted-foreground">
+                An inquisitive software artisan and digital conjurer, passionately immersed in the
+                intricate symphony of codecraft, perpetually driven by a relentless quest for
+                computational elegance and interactive ingenuity.
+              </p>
 
-            <Link
-              href="/about"
-              className="text-muted-foreground mt-2 w-fit cursor-pointer font-mono text-sm transition-all duration-300 ease-in-out hover:scale-101 hover:text-black hover:underline"
-            >
-              Get to know more!
-            </Link>
+              <Link
+                href="/about"
+                className="text-muted-foreground mt-2 w-fit cursor-pointer font-mono text-sm transition-all duration-300 ease-in-out hover:scale-101 hover:text-black hover:underline"
+              >
+                Get to know more!
+              </Link>
+            </div>
+
+            {/* Image Grid */}
+            <div className="lg:col-span-7">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
+                  <Image
+                    src="/images/me.webp"
+                    alt="Azra Muhammad Bhaskarogra"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="bg-muted relative aspect-square overflow-hidden rounded-lg">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-muted-foreground font-mono text-lg">Web</span>
+                    </div>
+                  </div>
+                  <div className="bg-muted relative aspect-square overflow-hidden rounded-lg">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-muted-foreground font-mono text-lg">Mobile</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </ViewAnimation>
       </Section>
