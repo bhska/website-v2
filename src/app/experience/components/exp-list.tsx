@@ -3,13 +3,39 @@ import ExpItem, { ExpItemProps } from './exp-item';
 
 const items: ExpItemProps[] = [
   {
+    status: ['remote', 'freelance'],
+    period: 'Dec 2025 - Present',
+    title: 'Creatype Studio',
+    description: (
+      <>
+        <p className="prose">
+          At Creatype Studio, I serve as a Vibe Coding Specialist and WordPress Developer, bridging
+          the gap between creative design and technical implementation. My role involves rapidly
+          prototyping and developing web solutions using AI-assisted coding workflows, enabling
+          faster iteration cycles and innovative approaches to client projects.
+        </p>
+        <p className="prose">
+          As a WordPress Developer, I build custom themes and plugins, implement complex page
+          layouts using Bricks Builder, and optimize site performance for the agency's diverse
+          client portfolio. I collaborate closely with designers to translate creative visions into
+          pixel-perfect, responsive websites while maintaining clean, maintainable code standards.
+        </p>
+      </>
+    ),
+    role: 'Vibe Coding Specialist • WordPress Developer',
+    image: '/images/creatype.svg',
+    link: 'https://creatype.studio/?ref=bhsk.dev',
+  },
+  {
     status: ['hybrid'],
     period: '2025 - Present',
     title: 'AI4CEO',
     description: (
       <>
         <p className="prose">
-          As the principal architect and lead engineer for AI4CEO, I built a customizable LLM-powered system integrating multiple “expert” modules—such as finance, HR, strategy, and legal—to support comprehensive decision-making for corporate executives.
+          As the principal architect and lead engineer for AI4CEO, I built a customizable
+          LLM-powered system integrating multiple “expert” modules—such as finance, HR, strategy,
+          and legal—to support comprehensive decision-making for corporate executives.
         </p>
       </>
     ),
