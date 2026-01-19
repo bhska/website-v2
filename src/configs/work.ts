@@ -63,6 +63,11 @@ export const works = [
   {
     description:
       'Desktop web application for cryptocurrency exchange featuring advanced trading charts, order management, and portfolio tracking.',
+    images: [
+      'https://bucket.bhsk.dev/nommia-web-1.png',
+      'https://bucket.bhsk.dev/nommia-web-2.png',
+      'https://bucket.bhsk.dev/nommia-web-3.png',
+    ],
     techStack: ['Vite', 'TailwindCSS', 'Shadcn UI', 'TypeScript'],
     title: 'Nommia Desktop Web App',
     client: 'Nommia',

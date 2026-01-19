@@ -6,6 +6,7 @@ import { Section } from '@/components/common/section';
 import { works } from '@/configs/work';
 import { ViewAnimation } from '@/providers/view-animation';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 // Helper to get highlighted works
 const highlightedWorks = works.filter((work) => work.highlighted).slice(0, 3);
@@ -17,6 +18,8 @@ export function HighlightedWorks({
   className?: string;
   showLink?: boolean;
 }) {
+  const [loading, setLoading] = useState(true);
+
   return (
     <Section className={cn('px-6 py-12 md:px-8', className)}>
       <div className="flex flex-col gap-8">
@@ -57,14 +60,29 @@ export function HighlightedWorks({
                 className="block space-y-3"
               >
                 <div className="bg-muted relative aspect-video overflow-hidden border">
-                  {work.images && work.images[0] && (
-                    <Image
-                      src={work.images[0]}
-                      alt={work.title}
-                      fill
-                      className="object-cover object-top grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
+                  {work.images && work.images[0] ? (
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={work.images[0]}
+                        alt={work.title}
+                        fill
+                        className="object-cover object-top grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                        style={{ opacity: loading ? 0 : 1 }}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        onLoad={() => setLoading(false)}
+                      />
+                      {loading && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-neutral-200">
+                          <div className="h-8 w-8 animate-spin rounded-full border-4 border-neutral-300 border-t-neutral-600" />
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <p className="text-sm text-neutral-500">
+                        No photos added yet. Due to NDA or will be updated periodically.
+                      </p>
+                    </div>
                   )}
                 </div>
 

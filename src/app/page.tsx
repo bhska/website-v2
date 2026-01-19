@@ -38,9 +38,9 @@ export default function Home() {
           delay={0.2}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
             {/* Text Content */}
-            <div className="flex flex-col justify-center gap-6 px-6 md:px-8 lg:col-span-8 lg:border-r lg:pr-8">
+            <div className="flex flex-col justify-center gap-4 px-6 pt-8 md:px-8 md:col-span-8 md:pr-8">
               <h2 className="font-mono text-4xl font-medium md:text-5xl">
                 Azra Muhammad Bhaskarogra
               </h2>
@@ -60,7 +60,7 @@ export default function Home() {
             </div>
 
             {/* Image Grid with Striped Background */}
-            <div className="lg:col-span-4">
+            <div className="md:col-span-4">
               <div
                 className="relative aspect-square overflow-hidden rounded-lg"
                 style={{

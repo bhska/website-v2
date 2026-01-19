@@ -1,16 +1,16 @@
 'use client';
 
-import useImageAspectRatio from '@/hooks/use-image-aspect-ratio';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import React, { useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 
@@ -27,129 +27,148 @@ interface WorkCardProps {
   };
 }
 
+interface ImageDimension {
+  width: number;
+  height: number;
+  loaded: boolean;
+}
+
+const PORTRAIT_MIN_RATIO = 0.4;
+const PORTRAIT_MAX_RATIO = 1;
+const PORTRAIT_HEIGHT = 350;
+const LANDSCAPE_HEIGHT = 300;
+
+const isPortraitRatio = (width: number, height: number): boolean => {
+  const ratio = width / height;
+  return ratio >= PORTRAIT_MIN_RATIO && ratio < PORTRAIT_MAX_RATIO;
+};
+
 const WorkCard: React.FC<WorkCardProps> = ({
   data: { title, description, images, techStack, client, category, year, url },
 }) => {
-  const imgRef = useRef<HTMLImageElement>(null!);
-  const aspectRatio = useImageAspectRatio(imgRef);
-
-  const isDesktopRatio = aspectRatio && aspectRatio > 1;
-  const isSingleImage = (images?.length ?? 0) === 1;
+  const [api, setApi] = useState<CarouselApi>();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [imageDimensions, setImageDimensions] = useState<Record<string, ImageDimension>>({});
   const isMobile = useIsMobile();
-  const plugin = React.useRef(Autoplay({ delay: 2000, stopOnInteraction: true, jump: false }));
+  const plugin = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: false, jump: false }));
 
   const imageList = images ?? [];
+  const isEmpty = imageList.length === 0;
+  const isSingleImage = imageList.length === 1;
 
-  const getCustomClassNames = (index: number) => {
-    switch (imageList.length) {
-      case 1:
-        return cn(
-          isDesktopRatio
-            ? '-bottom-5 left-0 right-0 mx-auto rotate-0 group-hover:-rotate-3'
-            : '-bottom-5 left-0 right-0 mx-auto rotate-0 group-hover:-rotate-3',
-        );
-      case 2:
-        return imagesStyle2(index);
-      case 3:
-        return imagesStyle3(index);
-      default:
-        return '';
-    }
+  const handleImageLoad = (src: string, e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    setImageDimensions((prev) => ({
+      ...prev,
+      [src]: {
+        width: img.naturalWidth,
+        height: img.naturalHeight,
+        loaded: true,
+      },
+    }));
   };
 
-  const imagesStyle2 = (index: number) => {
-    switch (index) {
-      case 0:
-        return cn(
-          isDesktopRatio
-            ? 'top-1/2 right-0 -translate-y-1/2 rotate-8 group-hover:-rotate-12'
-            : 'top-3/4 right-40 -translate-y-1/2 rotate-8 group-hover:-rotate-12',
-        );
-      case 1:
-        return cn(
-          isDesktopRatio
-            ? 'top-1/2 left-0 -translate-y-1/2 -rotate-8 group-hover:-rotate-12'
-            : 'top-1/4 left-40 -translate-y-1/2 -rotate-8 group-hover:-rotate-12',
-        );
-      default:
-        return '';
+  const getIsPortrait = (): boolean => {
+    if (imageList.length === 0) return false;
+    const firstImg = imageList[0];
+    const dim = imageDimensions[firstImg];
+    if (dim && dim.loaded) {
+      return isPortraitRatio(dim.width, dim.height);
     }
+    return false;
   };
 
-  const imagesStyle3 = (index: number) => {
-    switch (index) {
-      case 0:
-        return cn(
-          isDesktopRatio
-            ? '-bottom-5 -left-5 rotate-6 group-hover:-rotate-12'
-            : '-bottom-5 left-10 -rotate-3 group-hover:-rotate-12',
-        );
-      case 1:
-        return cn(
-          isDesktopRatio
-            ? '-top-10 right-0 left-0 mx-auto rotate-6 group-hover:-rotate-12'
-            : '-top-10 right-0 left-0 mx-auto rotate-6 group-hover:-rotate-12',
-        );
-      case 2:
-        return cn(
-          isDesktopRatio
-            ? 'right-5 -bottom-10 -rotate-12 group-hover:-rotate-12'
-            : 'right-5 -bottom-10 -rotate-12 group-hover:-rotate-12',
-        );
-      default:
-        return '';
-    }
-  };
+  const isPortrait = getIsPortrait();
+  const showTwoImages = isPortrait && !isMobile && imageList.length >= 2;
+  const containerHeight = isPortrait ? PORTRAIT_HEIGHT : LANDSCAPE_HEIGHT;
+
+  useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => {
+      setActiveIndex(api.selectedScrollSnap());
+    };
+
+    api.on('select', onSelect);
+    api.on('reInit', onSelect);
+
+    setActiveIndex(api.selectedScrollSnap());
+
+    return () => {
+      api.off('select', onSelect);
+      api.off('reInit', onSelect);
+    };
+  }, [api]);
 
   return (
-    <div className="flex flex-col rounded-md p-4 py-0 transition">
-      {isMobile ? (
-        <Carousel
-          className="w-full max-w-xs"
-          plugins={[plugin.current]}
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={plugin.current.reset}
-        >
-          <div className="bg-dashed flex items-center justify-center rounded-2xl border border-neutral-300/20 p-5">
-            <CarouselContent>
-              {imageList.map((src, index) => (
-                <CarouselItem key={src}>
-                  <Image
-                    ref={imgRef}
-                    alt={`${title} project screenshot ${index + 1}`}
-                    width={isDesktopRatio ? (isSingleImage ? 650 : 450) : 250}
-                    height={isDesktopRatio ? (isSingleImage ? 650 : 450) : 200}
-                    src={src}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </div>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      ) : (
-        <div
-          className={cn(
-            'bg-dashed group relative rounded-2xl border border-neutral-300/20 bg-neutral-200/40 mask-b-from-100% transition duration-300 ease-in-out hover:bg-neutral-300',
-            isSingleImage ? 'aspect-[16/6]' : 'aspect-video',
-          )}
-        >
-          {imageList.map((src, index) => (
-            <Image
-              ref={imgRef}
-              key={src}
-              alt={`${title} project screenshot ${index + 1}`}
-              width={isDesktopRatio ? (isSingleImage ? 650 : 450) : 250}
-              height={isDesktopRatio ? (isSingleImage ? 650 : 450) : 200}
-              src={src}
-              className={cn(
-                getCustomClassNames(index),
-                'absolute transition duration-300 ease-in-out group-hover:scale-110 group-hover:shadow-2xl',
-              )}
-            />
-          ))}
+    <div className="flex flex-col rounded-md p-4 py-0">
+      {isEmpty ? (
+        <div className="flex min-h-[200px] w-full items-center justify-center rounded-2xl border border-neutral-300/20 bg-neutral-200/40">
+          <p className="text-sm text-neutral-500">
+            No photos added yet. Due to NDA or will be updated periodically.
+          </p>
         </div>
+      ) : (
+        <Carousel
+          className="w-full"
+          plugins={[plugin.current]}
+          opts={{
+            align: 'start',
+            loop: true,
+          }}
+          setApi={setApi}
+        >
+          <div
+            className={cn(
+              'relative rounded-2xl border border-neutral-300/20 bg-neutral-200/40',
+              isMobile ? 'px-8 py-4' : 'px-12 py-6',
+            )}
+          >
+            <CarouselContent className="-ml-4">
+              {imageList.map((src) => {
+                return (
+                  <CarouselItem
+                    key={src}
+                    className={cn('pl-4', showTwoImages ? 'basis-1/2' : 'basis-full')}
+                  >
+                    <div
+                      className="relative overflow-hidden rounded-lg"
+                      style={{ height: `${containerHeight}px` }}
+                    >
+                      <Image
+                        alt={`${title} - ${src.split('/').pop()}`}
+                        src={src}
+                        fill
+                        className="object-contain"
+                        sizes={showTwoImages ? '50vw' : '100vw'}
+                        onLoad={(e) => handleImageLoad(src, e)}
+                      />
+                    </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+
+            {!isSingleImage && (
+              <>
+                <CarouselPrevious className="top-1/2 left-2 -translate-y-1/2" />
+                <CarouselNext className="top-1/2 right-2 -translate-y-1/2" />
+              </>
+            )}
+
+            <div className="mt-3 flex justify-center gap-2">
+              {imageList.map((src, index) => (
+                <div
+                  key={src}
+                  className={cn(
+                    'h-1.5 w-1.5 rounded-full transition-[width,background-color] duration-200',
+                    index === activeIndex ? 'w-3 bg-neutral-700' : 'bg-neutral-400',
+                  )}
+                />
+              ))}
+            </div>
+          </div>
+        </Carousel>
       )}
 
       <div className="mt-4 flex flex-wrap gap-2">
@@ -159,16 +178,6 @@ const WorkCard: React.FC<WorkCardProps> = ({
           </span>
         ))}
       </div>
-
-      {/* <h3 className="mb-1 font-mono text-xl font-semibold">{title}</h3> */}
-
-      {/* <div className="flex w-full flex-col justify-between gap-0 md:flex-row md:gap-10">
-        <div>{client}</div>
-        <div>{category}</div>
-        <div>{year}</div>
-      </div> */}
-
-      {/* <p className="mb-2 text-gray-300">{description}</p> */}
 
       {url && (
         <a
