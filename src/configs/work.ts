@@ -1,4 +1,5 @@
 export const works = [
+  // 2025
   {
     description:
       'Document management system for Faculty of Science and Mathematics at Diponegoro University with workflow automation and digital archives.',
@@ -143,16 +144,6 @@ export const works = [
     category: 'Web, Mobile',
   },
   {
-    description:
-      'Competition website for Technocorner 2022 featuring event information, registration, and participant dashboard.',
-    techStack: ['Nextjs', 'React', 'Typescript', 'TailwindCSS', 'Vercel'],
-    title: 'Monoxide',
-    client: 'Technocorner 2022',
-    year: '2022',
-    category: 'Web',
-    participation: 'Frontend Developer',
-  },
-  {
     description: '',
     images: ['https://bucket.bhsk.dev/baleharjo-1.png', 'https://bucket.bhsk.dev/baleharjo-2.png'],
     techStack: [
@@ -179,6 +170,7 @@ export const works = [
     category: 'Mobile',
     participation: 'Mobile Developer',
   },
+  // 2024
   {
     description: '',
     images: ['https://bucket.bhsk.dev/portfolio-4.png'],
@@ -219,6 +211,7 @@ export const works = [
     year: '2024',
     category: 'Web',
   },
+  // 2023
   {
     description: '',
     images: ['https://bucket.bhsk.dev/portfolio-6.png'],
@@ -280,6 +273,17 @@ export const works = [
     year: '2023',
     category: 'Web',
   },
+  // 2022
+  {
+    description:
+      'Competition website for Technocorner 2022 featuring event information, registration, and participant dashboard.',
+    techStack: ['Nextjs', 'React', 'Typescript', 'TailwindCSS', 'Vercel'],
+    title: 'Monoxide',
+    client: 'Technocorner 2022',
+    year: '2022',
+    category: 'Web',
+    participation: 'Frontend Developer',
+  },
   {
     description: '',
     images: ['https://bucket.bhsk.dev/portfolio-7.png'],
@@ -337,6 +341,7 @@ export const works = [
     year: '2022',
     category: 'Web',
   },
+  // 2021
   {
     description: '',
     images: ['https://bucket.bhsk.dev/portfolio-1.png'],
@@ -368,6 +373,7 @@ export const works = [
     year: '2021',
     category: 'Web',
   },
+  // 2020
   {
     description: '',
     images: [
