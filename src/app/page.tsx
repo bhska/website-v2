@@ -59,30 +59,25 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Image Grid */}
+            {/* Image Grid with Striped Background */}
             <div className="lg:col-span-7">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="relative aspect-[3/4] overflow-hidden rounded-lg">
-                  <Image
-                    src="/images/me.webp"
-                    alt="Azra Muhammad Bhaskarogra"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="flex flex-col gap-4">
-                  <div className="bg-muted relative aspect-square overflow-hidden rounded-lg">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-muted-foreground font-mono text-lg">Web</span>
-                    </div>
-                  </div>
-                  <div className="bg-muted relative aspect-square overflow-hidden rounded-lg">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-muted-foreground font-mono text-lg">Mobile</span>
-                    </div>
-                  </div>
-                </div>
+              <div
+                className="relative aspect-square overflow-hidden rounded-lg"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)
+                  `,
+                  backgroundSize: '20px 20px',
+                }}
+              >
+                <Image
+                  src="/images/me.webp"
+                  alt="Azra Muhammad Bhaskarogra"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
             </div>
           </div>
