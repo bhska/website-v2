@@ -178,19 +178,31 @@ export const works = [
   },
   {
     description:
-      'Point of sales mobile application for restaurant management with order tracking, payment integration, and inventory management.',
+      'Web-based dashboard for restaurant point of sales with real-time order management, analytics, and administrative controls.',
     images: [
       'https://bucket.bhsk.dev/alaise-dashboard-1.png',
       'https://bucket.bhsk.dev/alaise-dashboard-2.png',
       'https://bucket.bhsk.dev/alaise-dashboard-3.png',
       'https://bucket.bhsk.dev/alaise-dashboard-4.png',
+    ],
+    techStack: ['Flutter', 'Dart', 'Firebase', 'Cloud Functions'],
+    title: 'Alaise POS Dashboard',
+    client: 'Alaise By The Lake',
+    year: '2025',
+    category: 'Web',
+    participation: 'Mobile Developer',
+  },
+  {
+    description:
+      'Progressive web application for restaurant point of sales enabling mobile ordering, payment processing, and inventory management.',
+    images: [
       'https://bucket.bhsk.dev/alaise-pwa-1.png',
       'https://bucket.bhsk.dev/alaise-pwa-2.png',
       'https://bucket.bhsk.dev/alaise-pwa-3.png',
       'https://bucket.bhsk.dev/alaise-pwa-4.png',
     ],
     techStack: ['Flutter', 'Dart', 'Firebase', 'Cloud Functions'],
-    title: 'Alaise By The Lake Point of Sales App',
+    title: 'Alaise PWA',
     client: 'Alaise By The Lake',
     year: '2025',
     category: 'Mobile',
