@@ -1,60 +1,12 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import { HighlightedWorks } from '@/components/sections/highlighted-works';
 import { SpotifySection } from '@/components/sections/spotify-section';
 import { Section } from '@/components/common/section';
 import { ViewAnimation } from '@/providers/view-animation';
-import { galleryItems } from '@/configs/gallery';
 import Link from 'next/link';
-import { useState, useEffect, Suspense } from 'react';
-
-const Lanyard = dynamic(() => import('@/components/animations/lanyard'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center bg-neutral-100">
-      <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-neutral-600" />
-    </div>
-  ),
-});
-
-const Gallery = dynamic(() => import('@/components/animations/gallery'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-full w-full items-center justify-center bg-neutral-100">
-      <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-neutral-600" />
-    </div>
-  ),
-});
-
-function LanyardWrapper() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <div className="flex h-full w-full items-center justify-center bg-neutral-100">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-neutral-600" />
-      </div>
-    );
-  }
-
-  return <Lanyard position={[1, 0, 12]} />;
-}
 
 export default function Home() {
-  const [showGallery, setShowGallery] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowGallery(true);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <>
       <Section>
@@ -64,80 +16,37 @@ export default function Home() {
           delay={0.2}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="bg-dashed flex aspect-video flex-col justify-center border-b p-10 md:aspect-square md:border-r md:border-b-0">
-              <h2 className="w-fit bg-white px-3 py-1 font-mono text-3xl font-medium sm:text-4xl md:text-5xl">
-                Azra Muhammad
-              </h2>
-              <h2 className="mt-2 w-fit bg-white px-3 py-1 font-mono text-3xl font-medium sm:text-4xl md:text-5xl">
-                Bhaskarogra
-              </h2>
+          <div className="flex flex-col items-start justify-center gap-6 py-8">
+            <h2 className="font-mono text-4xl font-medium md:text-5xl">
+              Azra Muhammad Bhaskarogra
+            </h2>
 
-              <p className="prose mt-4">
-                "An inquisitive software artisan and digital conjurer, passionately immersed in the
-                intricate symphony of codecraft, perpetually driven by a relentless quest for
-                computational elegance and interactive ingenuity."
-              </p>
+            <p className="prose text-muted-foreground max-w-2xl">
+              An inquisitive software artisan and digital conjurer, passionately immersed in the
+              intricate symphony of codecraft, perpetually driven by a relentless quest for
+              computational elegance and interactive ingenuity.
+            </p>
 
-              <Link
-                href="/about"
-                className="text-muted-foreground mt-6 w-fit cursor-pointer font-mono text-sm transition-all duration-300 ease-in-out hover:scale-101 hover:text-black hover:underline"
-              >
-                Get to know more!
-              </Link>
-            </div>
-
-            <div className="aspect-square">
-              <LanyardWrapper />
-            </div>
+            <Link
+              href="/about"
+              className="text-muted-foreground mt-2 w-fit cursor-pointer font-mono text-sm transition-all duration-300 ease-in-out hover:scale-101 hover:text-black hover:underline"
+            >
+              Get to know more!
+            </Link>
           </div>
         </ViewAnimation>
       </Section>
 
       <HighlightedWorks />
 
-      <div className="relative">
+      <Section className="flex flex-col items-center gap-4 py-12">
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
           delay={0.4}
           viewport={{ once: true }}
         >
-          <Section className="relative flex h-[50svh] flex-col items-center gap-4 pt-6">
-            {/*<span className="font-mono text-3xl">Gallery</span>*/}
-            <span className="prose text-muted-foreground px-4 text-center text-sm">
-              A curated visual anthology capturing fragments and chronicles of my technological
-              odyssey.
-            </span>
-            <Link
-              href="/gallery"
-              className="text-muted-foreground z-[100] cursor-pointer font-mono text-sm transition-all duration-300 ease-in-out hover:scale-105 hover:text-black hover:underline"
-            >
-              Show More
-            </Link>
-
-            {showGallery && (
-              <Gallery
-                items={galleryItems}
-                bend={2}
-                textColor="#333"
-                borderRadius={0.05}
-                className="absolute bottom-0 left-0 z-10 h-5/6 w-full md:h-5/6"
-              />
-            )}
-          </Section>
-        </ViewAnimation>
-      </div>
-
-      <Section className="relative flex h-[20svh] flex-col items-center gap-4 pt-6">
-        <ViewAnimation
-          initial={{ opacity: 0, translateY: -8 }}
-          whileInView={{ opacity: 1, translateY: 0 }}
-          delay={0.6}
-          viewport={{ once: true }}
-        >
-          <div className="relative flex flex-col items-center gap-4 pt-6">
-            {/*<span className="font-mono text-3xl">Contact</span>*/}
+          <div className="flex flex-col items-center gap-4">
             <span className="prose text-muted-foreground px-4 text-center text-sm">
               Feel free to reach out for collaborations, inquiries, or just a friendly chat!
             </span>
