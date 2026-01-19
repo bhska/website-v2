@@ -76,9 +76,8 @@ export const works = [
   {
     description: '',
     images: [
-      'https://bucket.bhsk.dev/delivery-order-1.png',
-      'https://bucket.bhsk.dev/delivery-order-2.png',
-      'https://bucket.bhsk.dev/delivery-order-3.png',
+      'https://bucket.bhsk.dev/delovery-order-1.png',
+      'https://bucket.bhsk.dev/delovery-order-2.png',
     ],
     techStack: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Supabase', 'Stripe'],
     title: "Delovery's Omnichannel Marketing Order Platform",
@@ -89,8 +88,8 @@ export const works = [
   {
     description: '',
     images: [
-      'https://bucket.bhsk.dev/delivery-chatpanel-1.png',
-      'https://bucket.bhsk.dev/delivery-chatpanel-2.png',
+      'https://bucket.bhsk.dev/delovery-chatpanel-1.png',
+      'https://bucket.bhsk.dev/delovery-chatpanel-2.png',
     ],
     techStack: [
       'Next.js',
@@ -107,7 +106,7 @@ export const works = [
   },
   {
     description: '',
-    images: ['https://bucket.bhsk.dev/delivery-chatbot-1.png'],
+    images: ['https://bucket.bhsk.dev/delovery-chatbot-1.png'],
     techStack: [
       'Node.js',
       'Express',
