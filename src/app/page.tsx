@@ -40,7 +40,7 @@ export default function Home() {
         >
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             {/* Text Content */}
-            <div className="flex flex-col justify-center gap-6 px-4 lg:col-span-5 lg:border-r lg:pr-8">
+            <div className="flex flex-col justify-center gap-6 px-6 md:px-8 lg:col-span-8 lg:border-r lg:pr-8">
               <h2 className="font-mono text-4xl font-medium md:text-5xl">
                 Azra Muhammad Bhaskarogra
               </h2>
@@ -60,7 +60,7 @@ export default function Home() {
             </div>
 
             {/* Image Grid with Striped Background */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-4">
               <div
                 className="relative aspect-square overflow-hidden rounded-lg"
                 style={{
@@ -76,7 +76,7 @@ export default function Home() {
                   alt="Azra Muhammad Bhaskarogra"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
             </div>
