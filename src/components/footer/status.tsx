@@ -108,13 +108,13 @@ export const Status = async () => {
   }
 
   return (
-    <Button variant="outline">
-      <a
-        className="flex items-center gap-3 text-xs md:text-sm"
-        target="_blank"
-        rel="noreferrer"
-        href={env.BETTERSTACK_URL}
-      >
+    <a
+      className="flex items-center gap-3 text-xs md:text-sm"
+      target="_blank"
+      rel="noreferrer"
+      href={env.BETTERSTACK_URL}
+    >
+      <Button variant="outline">
         <span className="relative flex h-2 w-2">
           <span
             className={`absolute inline-flex size-full animate-ping rounded-full opacity-75 ${statusColor}`}
@@ -122,7 +122,7 @@ export const Status = async () => {
           <span className={`relative inline-flex h-2 w-2 rounded-full ${statusColor}`} />
         </span>
         <span className="text-muted-foreground">{statusLabel}</span>
-      </a>
-    </Button>
+      </Button>
+    </a>
   );
 };
