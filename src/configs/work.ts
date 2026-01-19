@@ -33,6 +33,11 @@ export const works = [
   {
     description:
       'Marketing landing page for AI platform with responsive design and interactive elements.',
+    images: [
+      'https://bucket.bhsk.dev/dm20-ai-landing-1.png',
+      'https://bucket.bhsk.dev/dm20-ai-landing-2.png',
+      'https://bucket.bhsk.dev/dm20-ai-landing-3.png',
+    ],
     techStack: ['HTML', 'TailwindCSS', 'JavaScript'],
     title: 'DM20.AI Landing Page',
     client: 'DirectMail 2.0',
@@ -43,6 +48,11 @@ export const works = [
   {
     description:
       'Progressive web application for cryptocurrency exchange with real-time data, wallet integration, and seamless trading experience.',
+    images: [
+      'https://bucket.bhsk.dev/nommia-pwa-1.png',
+      'https://bucket.bhsk.dev/nommia-pwa-2.png',
+      'https://bucket.bhsk.dev/nommia-pwa-3.png',
+    ],
     techStack: ['Vite', 'TailwindCSS', 'Shadcn UI', 'TypeScript'],
     title: 'Nommia PWA/Mobile Web App',
     client: 'Nommia',
@@ -169,6 +179,16 @@ export const works = [
   {
     description:
       'Point of sales mobile application for restaurant management with order tracking, payment integration, and inventory management.',
+    images: [
+      'https://bucket.bhsk.dev/alaise-dashboard-1.png',
+      'https://bucket.bhsk.dev/alaise-dashboard-2.png',
+      'https://bucket.bhsk.dev/alaise-dashboard-3.png',
+      'https://bucket.bhsk.dev/alaise-dashboard-4.png',
+      'https://bucket.bhsk.dev/alaise-pwa-1.png',
+      'https://bucket.bhsk.dev/alaise-pwa-2.png',
+      'https://bucket.bhsk.dev/alaise-pwa-3.png',
+      'https://bucket.bhsk.dev/alaise-pwa-4.png',
+    ],
     techStack: ['Flutter', 'Dart', 'Firebase', 'Cloud Functions'],
     title: 'Alaise By The Lake Point of Sales App',
     client: 'Alaise By The Lake',
