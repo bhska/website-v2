@@ -62,7 +62,7 @@ export function HighlightedWorks({
                       src={work.images[0]}
                       alt={work.title}
                       fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-top grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   )}
