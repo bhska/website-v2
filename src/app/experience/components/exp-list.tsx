@@ -29,7 +29,7 @@ const items: ExpItemProps[] = [
   },
   {
     status: ['hybrid'],
-    period: '2025 - Present',
+    period: '2025 - Jan 2026',
     title: 'AI4CEO',
     description: (
       <>
@@ -46,7 +46,7 @@ const items: ExpItemProps[] = [
   },
   {
     status: ['hybrid'],
-    period: '2024 - Present',
+    period: '2024 - Jan 2026',
     title: 'Lazuardy',
     description: (
       <>
