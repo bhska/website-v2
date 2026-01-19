@@ -84,6 +84,7 @@ export const works = [
     year: '2025',
     category: 'Web',
     url: 'https://app.ai4.ceo/login',
+    highlighted: true,
   },
   {
     description:
@@ -133,7 +134,8 @@ export const works = [
     title: "Delovery's Omnichannel Marketing Chatbot",
     client: 'Delovery',
     year: '2025',
-    category: 'Web',
+    category: 'AI, Automation',
+    highlighted: true,
   },
   {
     description:
@@ -379,6 +381,7 @@ export const works = [
     client: 'Dafam Hotel Management',
     year: '2022',
     category: 'Web',
+    highlighted: true,
   },
   {
     description:

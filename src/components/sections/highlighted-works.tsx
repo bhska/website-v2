@@ -7,8 +7,8 @@ import { works } from '@/configs/work';
 import { ViewAnimation } from '@/providers/view-animation';
 import { cn } from '@/lib/utils';
 
-// Helper to get highlighted works (filtering for those with images)
-const highlightedWorks = works.filter((work) => work.images && work.images.length > 0).slice(0, 3);
+// Helper to get highlighted works
+const highlightedWorks = works.filter((work) => work.highlighted).slice(0, 3);
 
 export function HighlightedWorks({
   className,
