@@ -25,6 +25,7 @@ const items: ExpItemProps[] = [
     role: 'Vibe Coding Specialist • WordPress Developer',
     image: '/images/creatype.svg',
     link: 'https://creatype.studio/?ref=bhsk.dev',
+    position: 'reverse',
   },
   {
     status: ['hybrid'],
