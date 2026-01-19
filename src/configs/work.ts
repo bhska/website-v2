@@ -61,7 +61,8 @@ export const works = [
     participation: 'Full-Stack Developer',
   },
   {
-    description: '',
+    description:
+      'Customizable LLM-powered executive decision support system integrating multiple expert modules for finance, HR, strategy, and legal guidance.',
     images: [
       'https://bucket.bhsk.dev/ai4ceo-1.png',
       'https://bucket.bhsk.dev/ai4ceo-2.png',
@@ -75,7 +76,8 @@ export const works = [
     url: 'https://app.ai4.ceo/login',
   },
   {
-    description: '',
+    description:
+      'Omnichannel marketing platform for order management with multi-channel integration, real-time inventory tracking, and automated workflow processing.',
     images: [
       'https://bucket.bhsk.dev/delovery-order-1.png',
       'https://bucket.bhsk.dev/delovery-order-2.png',
@@ -87,7 +89,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: '',
+    description:
+      'Unified customer communication hub integrating multiple messaging channels with Chatwoot for centralized customer support and engagement.',
     images: [
       'https://bucket.bhsk.dev/delovery-chatpanel-1.png',
       'https://bucket.bhsk.dev/delovery-chatpanel-2.png',
@@ -106,7 +109,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: '',
+    description:
+      'AI-powered WhatsApp chatbot for automated customer interactions, lead qualification, and 24/7 business communication support.',
     images: ['https://bucket.bhsk.dev/delovery-chatbot-1.png'],
     techStack: [
       'Node.js',
@@ -122,7 +126,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: '',
+    description:
+      'Comprehensive security patrol management system with real-time tracking, incident reporting, and mobile app integration for campus security operations.',
     images: [
       'https://bucket.bhsk.dev/patroli-satpam-1.png',
       'https://bucket.bhsk.dev/patroli-satpam-2.png',
@@ -144,7 +149,8 @@ export const works = [
     category: 'Web, Mobile',
   },
   {
-    description: '',
+    description:
+      'Official village profile website showcasing community information, government services, announcements, and digital governance for Baleharjo Village.',
     images: ['https://bucket.bhsk.dev/baleharjo-1.png', 'https://bucket.bhsk.dev/baleharjo-2.png'],
     techStack: [
       'Nextjs',
@@ -172,7 +178,8 @@ export const works = [
   },
   // 2024
   {
-    description: '',
+    description:
+      'Mobile application design for security patrol system featuring intuitive interface for incident reporting, real-time location tracking, and task management.',
     images: ['https://bucket.bhsk.dev/portfolio-4.png'],
     techStack: ['Figma'],
     title: 'Patroli Satpam - Mobile',
@@ -181,7 +188,8 @@ export const works = [
     category: 'UI/UX',
   },
   {
-    description: '',
+    description:
+      'E-commerce platform design for preloved learning materials marketplace connecting students with affordable textbooks and study resources.',
     images: ['https://bucket.bhsk.dev/portfolio-2.png'],
     techStack: ['Figma'],
     title: 'EduStuff - Preloved Learning Stuff Ecommerce',
@@ -190,7 +198,8 @@ export const works = [
     category: 'UI/UX',
   },
   {
-    description: '',
+    description:
+      'Autonomous drone system for precision agriculture and surveillance using Python-based flight control with ArduPilot and PX4 autopilot frameworks.',
     images: [
       'https://bucket.bhsk.dev/drone-1.png',
       'https://bucket.bhsk.dev/drone-2.png',
@@ -203,7 +212,8 @@ export const works = [
     category: 'Drone',
   },
   {
-    description: '',
+    description:
+      'Company profile website for HMIF student organization showcasing projects, events, and member achievements with modern animated design.',
     images: ['https://bucket.bhsk.dev/ipro-1.png', 'https://bucket.bhsk.dev/ipro-2.png'],
     techStack: ['Nextjs', 'React', 'Typescript', 'TailwindCSS', 'Vercel', 'Motion'],
     title: 'Informatics Project - Company Profile',
@@ -213,7 +223,8 @@ export const works = [
   },
   // 2023
   {
-    description: '',
+    description:
+      'Community safety and neighborhood assistance platform design connecting residents with local services, emergency contacts, and community events.',
     images: ['https://bucket.bhsk.dev/portfolio-6.png'],
     techStack: ['Figma'],
     title: 'Sekitarmu',
@@ -222,7 +233,8 @@ export const works = [
     category: 'UI/UX',
   },
   {
-    description: '',
+    description:
+      'Event landing page design for Anforcom computer science competition featuring registration flow and event information.',
     images: ['https://bucket.bhsk.dev/portfolio-3.png'],
     techStack: ['Figma'],
     title: 'Anforcom - Landing Page',
@@ -231,7 +243,8 @@ export const works = [
     category: 'UI/UX',
   },
   {
-    description: '',
+    description:
+      'Finance management mobile application with expense tracking, budget planning, and financial analytics for personal finance management.',
     images: [
       'https://bucket.bhsk.dev/mulo-1.png',
       'https://bucket.bhsk.dev/mulo-2.png',
@@ -244,7 +257,8 @@ export const works = [
     category: 'Mobile',
   },
   {
-    description: '',
+    description:
+      'E-commerce platform for furniture retail with product catalog, shopping cart, and seamless checkout experience.',
     images: [
       'https://bucket.bhsk.dev/furniboost-1.png',
       'https://bucket.bhsk.dev/furniboost-2.png',
@@ -256,7 +270,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: '',
+    description:
+      'Community forum platform inspired by Instagram for student discussions, topic-based posts, and social networking features.',
     images: ['https://bucket.bhsk.dev/eradika-1.png'],
     techStack: ['Nextjs', 'React', 'Typescript', 'TailwindCSS', 'Vercel', 'Firebase', 'RealtimeDB'],
     title: 'Eradika - Instagram-inspired Forum',
@@ -265,7 +280,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: '',
+    description:
+      'Ticketing platform for campus events with seat selection, payment processing, and attendee management features.',
     images: ['https://bucket.bhsk.dev/igate-1.png', 'https://bucket.bhsk.dev/igate-2.png'],
     techStack: ['Nextjs', 'React', 'Typescript', 'TailwindCSS', 'Vercel', 'Airtable', 'Motion'],
     title: 'I-Gate Ticketing Platform',
@@ -285,7 +301,8 @@ export const works = [
     participation: 'Frontend Developer',
   },
   {
-    description: '',
+    description:
+      'Initial design draft for ongoing story platform showcasing narrative-driven content with interactive storytelling elements.',
     images: ['https://bucket.bhsk.dev/portfolio-7.png'],
     techStack: ['Figma'],
     title: 'Informatics Ongoing Story - Draft',
@@ -294,7 +311,8 @@ export const works = [
     category: 'UI/UX',
   },
   {
-    description: '',
+    description:
+      'Restaurant table booking and menu management UI design with intuitive ordering flow and reservation system.',
     images: ['https://bucket.bhsk.dev/portfolio-5.png'],
     techStack: ['Figma'],
     title: 'Go-Resto',
@@ -303,7 +321,8 @@ export const works = [
     category: 'UI/UX',
   },
   {
-    description: '',
+    description:
+      'Interactive storytelling platform for HMIF featuring narrative content, multimedia integration, and community engagement features.',
     images: [
       'https://bucket.bhsk.dev/ios-1.png',
       'https://bucket.bhsk.dev/ios-2.png',
@@ -316,7 +335,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: 'HaiDafam',
+    description:
+      'Progressive web application for hotel booking and reservation management with real-time availability and seamless booking flow.',
     images: [
       'https://bucket.bhsk.dev/haidafam-1.png',
       'https://bucket.bhsk.dev/haidafam-2.png',
@@ -329,7 +349,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: 'HaiDafam',
+    description:
+      'Comprehensive hospitality dashboard for hotel staff managing reservations, guest services, and operational analytics.',
     images: [
       'https://bucket.bhsk.dev/dafam-1.png',
       'https://bucket.bhsk.dev/dafam-2.png',
@@ -343,7 +364,8 @@ export const works = [
   },
   // 2021
   {
-    description: '',
+    description:
+      'Alumni tracer study platform design for tracking graduate career paths and gathering employment data for educational improvement.',
     images: ['https://bucket.bhsk.dev/portfolio-1.png'],
     techStack: ['Figma'],
     title: 'Oejar - Study Tracer Platform',
@@ -352,7 +374,8 @@ export const works = [
     category: 'UI/UX',
   },
   {
-    description: '',
+    description:
+      'Progressive web application upgrade for Warung merchant platform with enhanced features and improved performance.',
     images: [
       'https://bucket.bhsk.dev/warung-v2-1.png',
       'https://bucket.bhsk.dev/warung-v2-2.png',
@@ -365,7 +388,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: '',
+    description:
+      'Digital suggestion and aspiration platform for students to submit feedback and communicate with school administration.',
     images: ['https://bucket.bhsk.dev/apimas-1.png', 'https://bucket.bhsk.dev/apimas-2.png'],
     techStack: ['Nextjs', 'React', 'Typescript', 'TailwindCSS', 'Vercel'],
     title: 'Aspiration App',
@@ -375,7 +399,8 @@ export const works = [
   },
   // 2020
   {
-    description: '',
+    description:
+      'Hospital online queue management system reducing wait times and improving patient flow with digital ticket and appointment scheduling.',
     images: [
       'https://bucket.bhsk.dev/arus-1.png',
       'https://bucket.bhsk.dev/arus-2.png',
@@ -388,7 +413,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: '',
+    description:
+      'Progressive web application for merchant management platform enabling digital payments and order processing for small businesses.',
     images: [
       'https://bucket.bhsk.dev/warung-1.png',
       'https://bucket.bhsk.dev/warung-2.png',
@@ -401,7 +427,8 @@ export const works = [
     category: 'Web',
   },
   {
-    description: '',
+    description:
+      'News aggregation application displaying trending news articles with personalized feed and category filtering.',
     images: ['https://bucket.bhsk.dev/news-feed-1.png', 'https://bucket.bhsk.dev/news-feed-2.png'],
     techStack: ['Nextjs', 'React', 'Typescript'],
     title: 'NewsFeed - News App',
