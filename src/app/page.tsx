@@ -40,7 +40,7 @@ export default function Home() {
         >
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             {/* Text Content */}
-            <div className="flex flex-col justify-center gap-6 lg:col-span-5">
+            <div className="flex flex-col justify-center gap-6 px-4 lg:col-span-5 lg:border-r lg:pr-8">
               <h2 className="font-mono text-4xl font-medium md:text-5xl">
                 Azra Muhammad Bhaskarogra
               </h2>
@@ -72,7 +72,7 @@ export default function Home() {
                 }}
               >
                 <Image
-                  src="/images/me.webp"
+                  src="/images/me-square.webp"
                   alt="Azra Muhammad Bhaskarogra"
                   fill
                   className="object-cover"
